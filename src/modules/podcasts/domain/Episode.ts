@@ -2,8 +2,8 @@ export interface Episode {
   id: string;
   title: string;
   description: string;
-  duration: string;
-  pubDate: string;
+  durationMs?: number;
+  pubDate: Date;
   url: string;
   podcastId: string;
 }
