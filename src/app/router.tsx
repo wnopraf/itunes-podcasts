@@ -6,21 +6,27 @@ import { EpisodeListPage } from '@/pages/EpisodeListPage';
 import { EpisodePlayerPage } from '@/pages/EpisodePlayerPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { PodcastListPage } from '@/pages/PodcastListPage';
+import { RouteErrorPage } from '@/pages/RouteErrorPage';
 
 export const router = createBrowserRouter([
   {
     Component: AppLayout,
     children: [
-      { path: PODCAST_PATHS.HOME, Component: PodcastListPage },
       {
-        path: PODCAST_PATHS.PODCAST,
-        Component: PodcastDetailLayout,
+        ErrorBoundary: RouteErrorPage,
         children: [
-          { index: true, Component: EpisodeListPage },
-          { path: PODCAST_PATHS.EPISODE, Component: EpisodePlayerPage },
+          { path: PODCAST_PATHS.HOME, Component: PodcastListPage },
+          {
+            path: PODCAST_PATHS.PODCAST,
+            Component: PodcastDetailLayout,
+            children: [
+              { index: true, Component: EpisodeListPage },
+              { path: PODCAST_PATHS.EPISODE, Component: EpisodePlayerPage },
+            ],
+          },
+          { path: '*', Component: NotFoundPage },
         ],
       },
-      { path: '*', Component: NotFoundPage },
     ],
   },
 ]);
