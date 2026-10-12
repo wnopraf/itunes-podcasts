@@ -1,13 +1,13 @@
 import { useCallback } from 'react';
 import { useAsyncData } from '@/shared/presentation/hooks/useAsyncData';
+import type { Podcast } from '../../domain/Podcast';
 import { usePodcastRepository } from '../contexts/PodcastRepositoryContext';
 
-export const useTopPodcasts = () => {
+export const useTopPodcasts = (): Podcast[] | null => {
   const repository = usePodcastRepository();
   const fetchPodcasts = useCallback(
     (signal: AbortSignal) => repository.getTopPodcasts(signal),
     [repository],
   );
-  const { data, error } = useAsyncData(fetchPodcasts);
-  return { podcasts: data ?? [], error };
+  return useAsyncData(fetchPodcasts);
 };

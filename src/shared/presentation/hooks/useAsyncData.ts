@@ -3,7 +3,7 @@ import { useSetLoading } from '../contexts/LoadingContext';
 
 const toError = (error: unknown) => (error instanceof Error ? error : new Error(String(error)));
 
-export const useAsyncData = <T>(fetcher: (signal: AbortSignal) => Promise<T>) => {
+export const useAsyncData = <T>(fetcher: (signal: AbortSignal) => Promise<T>): T | null => {
   const setLoading = useSetLoading();
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<Error | null>(null);
@@ -35,5 +35,6 @@ export const useAsyncData = <T>(fetcher: (signal: AbortSignal) => Promise<T>) =>
     };
   }, [fetcher, setLoading]);
 
-  return { data, error };
+  if (error) throw error;
+  return data;
 };
