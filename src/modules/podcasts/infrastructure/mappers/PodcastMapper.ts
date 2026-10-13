@@ -8,7 +8,7 @@ export const mapPodcastApiDtoToPodcast = (dto: PodcastsResponseApiDto): Podcast[
       title: entry['im:name'].label,
       description: entry.summary.label,
       author: entry['im:artist'].label,
-      imageUrl: entry['im:image'][0].attributes.height,
+      imageUrl: entry['im:image'].at(-1)?.label ?? '',
     };
   });
 };
