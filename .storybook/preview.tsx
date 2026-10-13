@@ -1,13 +1,19 @@
 import type { Preview } from '@storybook/react-vite';
 import { MemoryRouter } from 'react-router';
+import { AppProviders } from '../src/app/providers/AppProviders';
+import { createFixturePodcastRepository } from '../src/test/fakes/createFixturePodcastRepository';
 import '../src/shared/presentation/styles/index.css';
+
+const podcastRepository = createFixturePodcastRepository();
 
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <MemoryRouter>
-        <Story />
-      </MemoryRouter>
+      <AppProviders podcastRepository={podcastRepository}>
+        <MemoryRouter>
+          <Story />
+        </MemoryRouter>
+      </AppProviders>
     ),
   ],
   parameters: {
