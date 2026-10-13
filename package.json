@@ -11,7 +11,9 @@
     "format:check": "oxfmt --check",
     "preview": "vite preview",
     "prepare": "husky",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "react": "^19.2.8",
@@ -19,6 +21,9 @@
     "react-router": "^8.4.0"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "10.6.1",
+    "@storybook/addon-docs": "10.6.1",
+    "@storybook/react-vite": "10.6.1",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
@@ -26,6 +31,7 @@
     "husky": "^9.1.7",
     "oxfmt": "^0.72.0",
     "oxlint": "^1.81.0",
+    "storybook": "10.6.1",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
   },
