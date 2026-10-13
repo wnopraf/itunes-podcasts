@@ -1,0 +1,53 @@
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-size: 100%;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+  }
+
+  body {
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-normal);
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: var(--line-height-tight);
+    font-weight: var(--font-weight-bold);
+  }
+
+  h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  h3 {
+    font-size: var(--font-size-lg);
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+    transition: color var(--duration-fast) var(--easing-standard);
+
+    &:hover {
+      color: var(--color-primary-hover);
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+}
