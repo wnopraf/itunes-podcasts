@@ -22,7 +22,7 @@ export const Input = ({
 
   return (
     <div className={className ? `${styles.root} ${className}` : styles.root}>
-      <label htmlFor={inputId} className={hideLabel ? styles.visuallyHidden : styles.label}>
+      <label htmlFor={inputId} className={hideLabel ? 'visually-hidden' : styles.label}>
         {label}
       </label>
       <input
