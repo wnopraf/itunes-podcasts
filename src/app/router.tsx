@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router';
-import { AppLayout } from '@/layouts/AppLayout';
-import { PodcastDetailLayout } from '@/layouts/PodcastDetailLayout';
+import { AppLayout } from '@/app/layouts/AppLayout';
+import { PodcastDetailLayout } from '@/modules/podcasts/presentation/layouts/PodcastDetailLayout';
 import { PODCAST_PATHS } from '@/modules/podcasts/presentation/utils/routes';
 import { EpisodeListPage } from '@/pages/EpisodeListPage';
 import { EpisodePlayerPage } from '@/pages/EpisodePlayerPage';
