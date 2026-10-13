@@ -1,0 +1,826 @@
+{
+  "feed": {
+    "author": {
+      "name": {
+        "label": "iTunes Store"
+      },
+      "uri": {
+        "label": "http://www.apple.com/itunes/"
+      }
+    },
+    "entry": [
+      {
+        "im:name": {
+          "label": "Tony Mantor's : Almost Live..... Nashville"
+        },
+        "im:image": [
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/13/61/db/1361db29-4ef7-6c00-dfc6-57101ff6ac8b/mza_667531997147998547.jpg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/13/61/db/1361db29-4ef7-6c00-dfc6-57101ff6ac8b/mza_667531997147998547.jpg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/13/61/db/1361db29-4ef7-6c00-dfc6-57101ff6ac8b/mza_667531997147998547.jpg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "Nashville based veteran music producer Tony Mantor’s Almost Live… Nashville podcast takes its listener on a journey through the business of music and entertainment. Following the success and popularity of his top-rated podcast on Autism & Mental Health awareness - Why Not Me? - Mantor hosts thought-provoking conversations and behind-the-scenes stories from various celebrity guests from the world of music, television and entertainment. With more than 30 years as an accomplished music producer based in Nashville, Mantor welcomes a worldly guest list of musicians, actors and entertainers who share their unique stories about the roles they’ve played in creating and sustaining what we know as popular American culture. Conversations and stories that also give a deeper understanding on what it takes to achieve success in the entertainment industry for aspiring entertainers who are currently pursuing their own dreams of being a star someday. Whether listening for the entertainment or storytelling factor alone, or for tips on how his guests faced their life’s challenges, Almost Live… Nashville will have a story for anyone who has been a fan of popular culture in music, movies and television over the last few decades."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "2026 iHeartMedia, Inc. © Any use of this intellectual property for text and data mining or computational analysis including as training material for artificial intelligence systems is strictly prohibited without express written consent from iHeartMedia"
+        },
+        "title": {
+          "label": "Tony Mantor's : Almost Live..... Nashville - iHeartPodcasts"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/tony-mantors-almost-live-nashville/id1751194045?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/tony-mantors-almost-live-nashville/id1751194045?uo=2",
+          "attributes": {
+            "im:id": "1751194045"
+          }
+        },
+        "im:artist": {
+          "label": "iHeartPodcasts"
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1525",
+            "term": "Music Interviews",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-music-music-interviews/id1525?uo=2",
+            "label": "Music Interviews"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2026-10-06T15:00:00-07:00",
+          "attributes": {
+            "label": "October 6, 2026"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "The Joe Budden Podcast"
+        },
+        "im:image": [
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "Tune into Joe Budden and his friends. Follow along the crazy adventures of these very random friends."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© All rights reserved"
+        },
+        "title": {
+          "label": "The Joe Budden Podcast - The Joe Budden Network"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/the-joe-budden-podcast/id1535809341?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/the-joe-budden-podcast/id1535809341?uo=2",
+          "attributes": {
+            "im:id": "1535809341"
+          }
+        },
+        "im:artist": {
+          "label": "The Joe Budden Network",
+          "attributes": {
+            "href": "https://podcasts.apple.com/us/artist/the-joe-budden-network/1535844019?uo=2"
+          }
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1310",
+            "term": "Music",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-music/id1310?uo=2",
+            "label": "Music"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2026-10-10T02:00:00-07:00",
+          "attributes": {
+            "label": "October 10, 2026"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "Dolly Parton's America"
+        },
+        "im:image": [
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/b5/2c/5f/b52c5f0b-e193-a9e2-fde1-295925d5419c/mza_12616703772719032641.jpg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/b5/2c/5f/b52c5f0b-e193-a9e2-fde1-295925d5419c/mza_12616703772719032641.jpg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/b5/2c/5f/b52c5f0b-e193-a9e2-fde1-295925d5419c/mza_12616703772719032641.jpg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "In this intensely divided moment, one of the few things everyone still seems to agree on is Dolly Parton—but why? That simple question leads to a deeply personal, historical, and musical rethinking of one of America’s great icons. Join us for a 9-episode journey into the Dollyverse. Hosted by Jad Abumrad. Produced and reported by Shima Oliaee. Dolly Parton’s America is a production from OSM Audio and WNYC Studios."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© WNYC Studios & OSM Audio"
+        },
+        "title": {
+          "label": "Dolly Parton's America - WNYC Studios & OSM Audio"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/dolly-partons-america/id1481398762?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/dolly-partons-america/id1481398762?uo=2",
+          "attributes": {
+            "im:id": "1481398762"
+          }
+        },
+        "im:artist": {
+          "label": "WNYC Studios & OSM Audio",
+          "attributes": {
+            "href": "https://podcasts.apple.com/us/artist/wnyc/127981066?uo=2"
+          }
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1524",
+            "term": "Music History",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-music-music-history/id1524?uo=2",
+            "label": "Music History"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2025-10-22T08:00:00-07:00",
+          "attributes": {
+            "label": "October 22, 2025"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "New Rory & MAL"
+        },
+        "im:image": [
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/10/a1/37/10a1376f-ec38-93c6-bac0-1fe2667fba54/mza_17497927755659124151.jpg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/10/a1/37/10a1376f-ec38-93c6-bac0-1fe2667fba54/mza_17497927755659124151.jpg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/10/a1/37/10a1376f-ec38-93c6-bac0-1fe2667fba54/mza_17497927755659124151.jpg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "New stories, new laughs, new random hot takes that no one asked for... New Rory & Mal"
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "2026 iHeartMedia, Inc. © Any use of this intellectual property for text and data mining or computational analysis including as training material for artificial intelligence systems is strictly prohibited without express written consent from iHeartMedia"
+        },
+        "title": {
+          "label": "New Rory & MAL - iHeartPodcasts and The Volume"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/new-rory-mal/id1572182022?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/new-rory-mal/id1572182022?uo=2",
+          "attributes": {
+            "im:id": "1572182022"
+          }
+        },
+        "im:artist": {
+          "label": "iHeartPodcasts and The Volume"
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1310",
+            "term": "Music",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-music/id1310?uo=2",
+            "label": "Music"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2026-10-13T01:00:00-07:00",
+          "attributes": {
+            "label": "October 13, 2026"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "A History of Rock Music in 500 Songs"
+        },
+        "im:image": [
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts124/v4/88/18/59/881859a5-f344-c249-f4b9-3d9b62add05a/mza_16428964146354887078.png/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts124/v4/88/18/59/881859a5-f344-c249-f4b9-3d9b62add05a/mza_16428964146354887078.png/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts124/v4/88/18/59/881859a5-f344-c249-f4b9-3d9b62add05a/mza_16428964146354887078.png/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "Andrew Hickey presents a history of rock music from 1938 to 1999, looking at five hundred songs that shaped the genre."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© 2021 A History of Rock Music in 500 Songs"
+        },
+        "title": {
+          "label": "A History of Rock Music in 500 Songs - Andrew Hickey"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/a-history-of-rock-music-in-500-songs/id1437402802?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/a-history-of-rock-music-in-500-songs/id1437402802?uo=2",
+          "attributes": {
+            "im:id": "1437402802"
+          }
+        },
+        "im:artist": {
+          "label": "Andrew Hickey"
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1524",
+            "term": "Music History",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-music-music-history/id1524?uo=2",
+            "label": "Music History"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2026-07-20T17:15:00-07:00",
+          "attributes": {
+            "label": "July 20, 2026"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "DISGRACELAND"
+        },
+        "im:image": [
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0d/dc/61/0ddc6188-5abd-0b0e-afff-15579f31ee05/mza_13310814426403836496.jpg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0d/dc/61/0ddc6188-5abd-0b0e-afff-15579f31ee05/mza_13310814426403836496.jpg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/0d/dc/61/0ddc6188-5abd-0b0e-afff-15579f31ee05/mza_13310814426403836496.jpg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "DISGRACELAND is an award-winning music and true crime podcast about musicians getting away with murder and behaving very badly. Jerry Lee Lewis's 5th wife? Dead. Sid and Nancy? Both dead. Why? Because musicians are insane, and insane things happen to them.\n\nWhy did we lose Amy Winehouse at 27? Was Debbie Harry really abducted by Ted Bundy as she claims? Is Patti Smith not just the \"Godmother of Punk\", but also the \"Original True Crime Girl\"? What really happened the night of the Jay Z nightclub stabbing? What do the Diddy indictments truly reveal? All these stories and more, on artists from every genre and their true crimes, in our massive 260-plus story archive. The Dead, the Stones, Johnny, Willie, Frank, Kurt, Courtney, Gaga, Lana, Taylor, and too many to name.\n\nDISGRACELAND is music history come to life through audio storytelling as you've never heard it before, with revealing facts: yes, assassins are the real reason the Beatles quit touring—reclaimed myths: no, Mama Cass didn't die from choking on a ham sandwich––and constant reckoning between art and artist––all told through the lens of true crime.\n\nThis is the podcast for the self-proclaimed \"Disgos\", the musically obsessed and the true crime heads; the outsiders, the independent thinkers who know that the best history is the history that gets buried. DISGRACELAND is where host Jake Brennan tells the stories they didn't want told. The kind you'll end up telling someone else. Get ready to uncover hidden truths and buckle up for truly edge-of-your-seat storytelling.\n\nNew, fully scripted, sound-designed episodes are released every Tuesday. Bonus chat-style episodes where Jake responds to voicemails, texts, and emails from Disgos hit on Thursdays, and \"Rewind\" episodes from our archive drop on Sundays.\n\nDISGRACELAND is not a journalistic podcast. It's an entertainment podcast inspired by true events. Certain dialogue and scenes are dramatized, as is common in scripted entertainment based on real stories. Sources and credits for each episode are available at www.disgracelandpod.com.\n\nTo unlock ad-free listening, exclusive content, and connect with your fellow Disgos, go to www.disgracelandpod.com to become an All Access member. \n\nRocka Rolla.\n\n "
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© 2026 Double Elvis Productions"
+        },
+        "title": {
+          "label": "DISGRACELAND - Exactly Right and iHeartPodcasts"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/disgraceland/id1275172907?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/disgraceland/id1275172907?uo=2",
+          "attributes": {
+            "im:id": "1275172907"
+          }
+        },
+        "im:artist": {
+          "label": "Exactly Right and iHeartPodcasts"
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1310",
+            "term": "Music",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-music/id1310?uo=2",
+            "label": "Music"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2026-10-13T00:05:00-07:00",
+          "attributes": {
+            "label": "October 13, 2026"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "Song Exploder"
+        },
+        "im:image": [
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/05/7b/35/057b3588-c74c-0334-d8ef-c6b8166d4afc/mza_12324100546486323942.jpg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/05/7b/35/057b3588-c74c-0334-d8ef-c6b8166d4afc/mza_12324100546486323942.jpg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/05/7b/35/057b3588-c74c-0334-d8ef-c6b8166d4afc/mza_12324100546486323942.jpg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "Song Exploder is a podcast where musicians take apart their songs, and piece by piece, tell the story of how they were made. Each episode features an artist discussing a song of theirs, breaking down the sounds and ideas that went into the writing and recording. Hosted and produced by Hrishikesh Hirway."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© Translucence"
+        },
+        "title": {
+          "label": "Song Exploder - Hrishikesh Hirway"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/song-exploder/id788236947?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/song-exploder/id788236947?uo=2",
+          "attributes": {
+            "im:id": "788236947"
+          }
+        },
+        "im:artist": {
+          "label": "Hrishikesh Hirway",
+          "attributes": {
+            "href": "https://podcasts.apple.com/us/artist/radiotopia/850139119?uo=2"
+          }
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1310",
+            "term": "Music",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-music/id1310?uo=2",
+            "label": "Music"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2026-09-23T07:00:00-07:00",
+          "attributes": {
+            "label": "September 23, 2026"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "Joe and Jada"
+        },
+        "im:image": [
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/9f/20/d3/9f20d371-060d-c3ee-fe91-982c013dc91a/mza_1355775778802325846.jpg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/9f/20/d3/9f20d371-060d-c3ee-fe91-982c013dc91a/mza_1355775778802325846.jpg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/9f/20/d3/9f20d371-060d-c3ee-fe91-982c013dc91a/mza_1355775778802325846.jpg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "Hip-hop legends and longtime friends Fat Joe and Jadakiss link up twice a week to share behind-the-scenes stories from their legendary careers and give their real thoughts on the hottest topics in music, sports, and pop culture."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "2026 iHeartMedia, Inc. © Any use of this intellectual property for text and data mining or computational analysis including as training material for artificial intelligence systems is strictly prohibited without express written consent from iHeartMedia"
+        },
+        "title": {
+          "label": "Joe and Jada - iHeartPodcasts and The Volume"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/joe-and-jada/id1812462068?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/joe-and-jada/id1812462068?uo=2",
+          "attributes": {
+            "im:id": "1812462068"
+          }
+        },
+        "im:artist": {
+          "label": "iHeartPodcasts and The Volume"
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1525",
+            "term": "Music Interviews",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-music-music-interviews/id1525?uo=2",
+            "label": "Music Interviews"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2026-10-13T03:00:00-07:00",
+          "attributes": {
+            "label": "October 13, 2026"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "NPR Music"
+        },
+        "im:image": [
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/d5/51/f3/d551f39b-5155-ba29-e9d6-6325099c751c/mza_16349419746751364369.png/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/d5/51/f3/d551f39b-5155-ba29-e9d6-6325099c751c/mza_16349419746751364369.png/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/d5/51/f3/d551f39b-5155-ba29-e9d6-6325099c751c/mza_16349419746751364369.png/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "Welcome to your all-in-one destination for every NPR Music podcast. We break down the best new albums to hit streaming each week on New Music Friday; we share the latest songs worthy of your playlists on All Songs Considered; there’s off-the-rails conversations (and chisme!) about Latin music on Alt.Latino. The NPR Music channel is your hub for new records, iconic artists and cult heroes, free of algorithms and full of surprises. Support public media by joining NPR+ at plus.npr.org. You’ll get perks for over 25 NPR podcasts, including bonus episodes and sponsor-free listening for NPR Music."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© Copyright 2011-2026 NPR - For Personal Use Only"
+        },
+        "title": {
+          "label": "NPR Music - NPR"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/npr-music/id79687345?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/npr-music/id79687345?uo=2",
+          "attributes": {
+            "im:id": "79687345"
+          }
+        },
+        "im:artist": {
+          "label": "NPR",
+          "attributes": {
+            "href": "https://podcasts.apple.com/us/artist/npr/125443881?uo=2"
+          }
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1310",
+            "term": "Music",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-music/id1310?uo=2",
+            "label": "Music"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2026-10-13T02:00:00-07:00",
+          "attributes": {
+            "label": "October 13, 2026"
+          }
+        }
+      },
+      {
+        "im:name": {
+          "label": "Bandsplain"
+        },
+        "im:image": [
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/b6/b6/c7/b6b6c79e-56fe-79b2-2fa7-8ecf39d9bd9c/mza_14258778620832355688.jpg/55x55bb.png",
+            "attributes": {
+              "height": "55"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/b6/b6/c7/b6b6c79e-56fe-79b2-2fa7-8ecf39d9bd9c/mza_14258778620832355688.jpg/60x60bb.png",
+            "attributes": {
+              "height": "60"
+            }
+          },
+          {
+            "label": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/b6/b6/c7/b6b6c79e-56fe-79b2-2fa7-8ecf39d9bd9c/mza_14258778620832355688.jpg/170x170bb.png",
+            "attributes": {
+              "height": "170"
+            }
+          }
+        ],
+        "summary": {
+          "label": "Bandsplain is a show where host Yasi Salek invites experts to explain cult bands and iconic artists—and why people love them."
+        },
+        "im:price": {
+          "label": "Get",
+          "attributes": {
+            "amount": "0",
+            "currency": "USD"
+          }
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Podcast",
+            "label": "Podcast"
+          }
+        },
+        "rights": {
+          "label": "© All rights reserved."
+        },
+        "title": {
+          "label": "Bandsplain - The Ringer"
+        },
+        "link": {
+          "attributes": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://podcasts.apple.com/us/podcast/bandsplain/id1671021737?uo=2"
+          }
+        },
+        "id": {
+          "label": "https://podcasts.apple.com/us/podcast/bandsplain/id1671021737?uo=2",
+          "attributes": {
+            "im:id": "1671021737"
+          }
+        },
+        "im:artist": {
+          "label": "The Ringer"
+        },
+        "category": {
+          "attributes": {
+            "im:id": "1310",
+            "term": "Music",
+            "scheme": "https://podcasts.apple.com/us/genre/podcasts-music/id1310?uo=2",
+            "label": "Music"
+          }
+        },
+        "im:releaseDate": {
+          "label": "2026-10-01T03:15:00-07:00",
+          "attributes": {
+            "label": "October 1, 2026"
+          }
+        }
+      }
+    ],
+    "updated": {
+      "label": "2026-10-13T05:09:44-07:00"
+    },
+    "rights": {
+      "label": "Copyright 2008 Apple Inc."
+    },
+    "title": {
+      "label": "iTunes Store: Top Podcasts in Music"
+    },
+    "icon": {
+      "label": "http://itunes.apple.com/favicon.ico"
+    },
+    "link": [
+      {
+        "attributes": {
+          "rel": "alternate",
+          "type": "text/html",
+          "href": "https://podcasts.apple.com/WebObjects/MZStore.woa/wa/viewTop?cc=us&id=179537&popId=3"
+        }
+      },
+      {
+        "attributes": {
+          "rel": "self",
+          "href": "https://itunes.apple.com/us/rss/toppodcasts/limit=10/genre=1310/json"
+        }
+      }
+    ],
+    "id": {
+      "label": "https://itunes.apple.com/us/rss/toppodcasts/limit=10/genre=1310/json"
+    }
+  }
+}
