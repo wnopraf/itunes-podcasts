@@ -54,6 +54,7 @@
 
     /* Layout */
     --container-max-width: 80rem;
+    --container-padding: clamp(var(--space-4), 4vw, var(--space-8));
     --sidebar-width: 18rem;
 
     /* Motion */
