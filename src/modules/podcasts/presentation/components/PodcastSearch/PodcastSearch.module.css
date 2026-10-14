@@ -1,0 +1,17 @@
+@layer components {
+  .root {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .count {
+    border: 1px solid var(--color-border);
+    padding: var(--space-1);
+    border-radius: var(--radius-md);
+    color: var(--color-bg);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    background-color: var(--color-primary);
+  }
+}
