@@ -11,7 +11,9 @@ type PodcastDetailProps = {
 export const PodcastDetail = ({ podcast }: PodcastDetailProps) => (
   <Card>
     <Link to={toPodcast(podcast.id)} className="link">
-      <img src={podcast.imageUrl} alt={podcast.title} className={styles.image} />
+      <div className={styles.imageContainer}>
+        <img src={podcast.imageUrl} alt={podcast.title} className={styles.image} />
+      </div>
     </Link>
     <hr className={styles.divider} />
     <div className={styles.section}>
