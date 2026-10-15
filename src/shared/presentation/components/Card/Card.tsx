@@ -1,10 +1,9 @@
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import styles from './Card.module.css';
-type CardProps = {
-  className?: string;
-  children: ReactNode;
-};
-export const Card: React.FC<CardProps> = ({ className, children, ...rest }) => {
+
+type CardProps = ComponentPropsWithoutRef<'div'>;
+
+export const Card = ({ className, children, ...rest }: CardProps) => {
   const classes = [styles.root, className].filter(Boolean).join(' ');
 
   return (
@@ -13,4 +12,5 @@ export const Card: React.FC<CardProps> = ({ className, children, ...rest }) => {
     </div>
   );
 };
+
 Card.displayName = 'Card';
