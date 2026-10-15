@@ -1,0 +1,37 @@
+@layer components {
+  .root {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .content {
+    align-items: center;
+    height: 100%;
+    text-align: center;
+  }
+
+  .image {
+    --image-size: 7rem;
+    --image-margin-top: calc(
+      -1 * (var(--image-size) * 0.5 + var(--space-4))
+    );
+    width: var(--image-size);
+    height: var(--image-size);
+    margin-top: var(--image-margin-top);
+    object-fit: cover;
+    border-radius: var(--radius-full);
+  }
+
+  .title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+    text-transform: uppercase;
+  }
+
+  .author {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+  }
+}
