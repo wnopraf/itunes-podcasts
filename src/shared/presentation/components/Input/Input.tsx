@@ -29,7 +29,7 @@ export const Input = ({
         {...rest}
         id={inputId}
         type="search"
-        className={styles.root}
+        className={styles.field}
         value={value}
         onChange={(e) => onValueChange(e.target.value)}
       />
