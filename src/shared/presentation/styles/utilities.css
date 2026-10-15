@@ -20,4 +20,10 @@
     text-decoration: none;
     color: inherit;
   }
+
+  .italic {
+    font-size: var(--font-size-sm);
+    font-style: italic;
+    color: var(--color-text-muted);
+  }
 }
