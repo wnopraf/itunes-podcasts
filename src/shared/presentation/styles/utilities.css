@@ -15,4 +15,9 @@
     white-space: nowrap;
     border: 0;
   }
+
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
 }
