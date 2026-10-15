@@ -1,8 +1,6 @@
 @layer components {
   .root {
     display: block;
-    color: inherit;
-    text-decoration: none;
   }
 
   .content {
@@ -13,9 +11,7 @@
 
   .image {
     --image-size: 7rem;
-    --image-margin-top: calc(
-      -1 * (var(--image-size) * 0.5 + var(--space-4))
-    );
+    --image-margin-top: calc(-1 * (var(--image-size) * 0.5 + var(--space-4)));
     width: var(--image-size);
     height: var(--image-size);
     margin-top: var(--image-margin-top);

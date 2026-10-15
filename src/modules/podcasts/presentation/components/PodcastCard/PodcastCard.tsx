@@ -9,7 +9,7 @@ type PodcastCardProps = {
 };
 
 export const PodcastCard = ({ podcast }: PodcastCardProps) => (
-  <Link to={toPodcast(podcast.id)} className={styles.root}>
+  <Link to={toPodcast(podcast.id)} className={`${styles.root} link`}>
     <Card className={styles.content}>
       <img src={podcast.imageUrl} alt={podcast.title} className={styles.image} />
       <h3 className={styles.title}>{podcast.title}</h3>

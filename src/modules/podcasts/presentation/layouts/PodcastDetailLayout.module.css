@@ -1,0 +1,25 @@
+@layer components {
+  .root {
+    display: grid;
+    gap: var(--space-6);
+
+    @media (min-width: 48rem) {
+      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+      align-items: start;
+      gap: var(--space-10);
+    }
+  }
+
+  .sidebar {
+    padding: var(--space-4);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+  }
+
+  .content {
+    display: grid;
+    gap: var(--space-6);
+    min-width: 0;
+  }
+}

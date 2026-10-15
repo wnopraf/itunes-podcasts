@@ -1,9 +1,11 @@
-.root {
-  width: 24px;
-  height: 24px;
-  background-color: var(--color-primary);
-  border-radius: var(--radius-full);
-  animation: pulse 1s linear infinite;
+@layer components {
+  .root {
+    width: 24px;
+    height: 24px;
+    background-color: var(--color-primary);
+    border-radius: var(--radius-full);
+    animation: pulse 1s linear infinite;
+  }
 }
 
 @keyframes pulse {
