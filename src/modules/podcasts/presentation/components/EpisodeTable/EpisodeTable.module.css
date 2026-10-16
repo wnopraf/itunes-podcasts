@@ -1,0 +1,24 @@
+@layer components {
+  .table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-sm);
+
+    th,
+    td {
+      padding: var(--space-2) var(--space-3);
+      border: 0;
+      border-bottom: 2px solid var(--color-border);
+      text-align: start;
+    }
+
+    th {
+      font-weight: var(--font-weight-bold);
+      border-bottom: 3px solid var(--color-border);
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: var(--color-row-alt);
+    }
+  }
+}
