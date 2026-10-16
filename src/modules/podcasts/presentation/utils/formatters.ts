@@ -10,3 +10,6 @@ export const formatDuration = (durationMs?: number) => {
 
   return hours > 0 ? `${hours}:${pad(minutes)}:${pad(seconds)}` : `${pad(minutes)}:${pad(seconds)}`;
 };
+
+export const formatDate = (date: Date) =>
+  `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()}`;
