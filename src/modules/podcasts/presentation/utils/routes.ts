@@ -8,5 +8,8 @@ export const PODCAST_PATHS = {
 
 export const toPodcast = (podcastId: string) => generatePath(PODCAST_PATHS.PODCAST, { podcastId });
 
-export const toEpisode = (podcastId: string, episodeId: string) =>
-  generatePath(PODCAST_PATHS.EPISODE, { podcastId, episodeId });
+export const toEpisode = (podcastId: number, episodeId: number) =>
+  generatePath(PODCAST_PATHS.EPISODE, {
+    podcastId: podcastId.toString(),
+    episodeId: episodeId.toString(),
+  });
