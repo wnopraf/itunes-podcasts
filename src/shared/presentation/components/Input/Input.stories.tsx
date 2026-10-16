@@ -4,7 +4,7 @@ import { fn } from 'storybook/test';
 import { Input } from './Input';
 
 const meta = {
-  title: 'Shared/SearchInput',
+  title: 'Shared/Input',
   component: Input,
   args: {
     label: 'Search',
