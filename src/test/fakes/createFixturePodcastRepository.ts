@@ -14,6 +14,9 @@ export const createFixturePodcastRepository = (): PodcastRepository => {
 
   return {
     getTopPodcasts: async () => podcasts,
-    getEpisodes: async (podcastId) => episodes.filter((episode) => episode.podcastId === podcastId),
+    getEpisodes: async (_podcastId) => {
+      void _podcastId;
+      return episodes;
+    },
   };
 };
