@@ -12,5 +12,3 @@ export const Card = ({ className, children, ...rest }: CardProps) => {
     </div>
   );
 };
-
-Card.displayName = 'Card';

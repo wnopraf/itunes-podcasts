@@ -12,5 +12,3 @@ export const PodcastSearch = ({ podcastCount, ...rest }: PodcastSearchProps) => 
     </div>
   );
 };
-
-PodcastSearch.displayName = 'PodcastSearch';

@@ -10,5 +10,3 @@ export const EpisodeTableHeader = ({ episodeCount }: EpisodeTableHeaderProps) =>
     <div className={styles.content}>Episodes: {episodeCount}</div>
   </Card>
 );
-
-EpisodeTableHeader.displayName = 'EpisodeTableHeader';

@@ -17,5 +17,3 @@ export const PodcastCard = ({ podcast }: PodcastCardProps) => (
     </Card>
   </Link>
 );
-
-PodcastCard.displayName = 'PodcastCard';

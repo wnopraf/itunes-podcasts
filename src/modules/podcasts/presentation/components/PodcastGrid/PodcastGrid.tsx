@@ -15,5 +15,3 @@ export const PodcastGrid = ({ podcasts }: PodcastGridProps) => (
     ))}
   </ul>
 );
-
-PodcastGrid.displayName = 'PodcastGrid';
