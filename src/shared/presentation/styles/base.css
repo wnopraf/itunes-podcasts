@@ -32,10 +32,8 @@
 
   a {
     color: var(--color-primary);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.15em;
     transition: color var(--duration-fast) var(--easing-standard);
-
+    text-decoration: none;
     &:hover {
       color: var(--color-primary-hover);
     }
