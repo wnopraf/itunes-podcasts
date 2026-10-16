@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Loader } from './Loader';
 
 const meta = {
-  title: 'Components/Loader',
+  title: 'Shared/Loader',
   component: Loader,
   render: () => <Loader />,
 } satisfies Meta<typeof Loader>;
