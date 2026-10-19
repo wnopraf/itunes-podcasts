@@ -1,32 +1,36 @@
-import { useState } from 'react';
+import { useState, useMemo, useDeferredValue } from 'react';
 import { useTopPodcasts } from '@/modules/podcasts/presentation/hooks/useTopPodcasts';
 import { filterPodcasts } from '@/modules/podcasts/presentation/utils/filterPodcasts';
+import { PodcastSearch } from '@/modules/podcasts/presentation/components/PodcastSearch/PodcastSearch';
+import { PodcastGrid } from '@/modules/podcasts/presentation/components/PodcastGrid/PodcastGrid';
 
 export const PodcastListPage = () => {
   const podcasts = useTopPodcasts();
   const [query, setQuery] = useState('');
+  const deferredQuery = useDeferredValue(query);
+  const isFiltering = deferredQuery !== query;
+  const hasPodcasts = !!podcasts;
+  const hasResults = hasPodcasts && podcasts.length > 0;
+  const filteredPodcasts = useMemo(() => {
+    return podcasts ? filterPodcasts(podcasts, deferredQuery) : [];
+  }, [podcasts, deferredQuery]);
 
-  if (!podcasts) {
-    return null;
+  if (!hasPodcasts) {
+    return <div>fale skeleton</div>;
   }
-  const filteredPodcasts = filterPodcasts(podcasts, query);
   return (
     <section>
       <header>
-        <div>
-          <span>Search</span>
-          <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
-        </div>
+        <PodcastSearch
+          podcastCount={podcasts.length}
+          label="Search podcasts"
+          value={query}
+          onValueChange={(value) => setQuery(value)}
+        />
       </header>
-      {filteredPodcasts.length === 0 ? (
-        <p>No podcasts found matching that query</p>
-      ) : (
-        <ul>
-          {filteredPodcasts.map((podcast) => (
-            <li key={podcast.id}>{podcast.title}</li>
-          ))}
-        </ul>
-      )}
+      {isFiltering && <div>fale skeleton</div>}
+      {!isFiltering && !hasResults && <p>No results found matching "{query}"</p>}
+      {!isFiltering && hasResults && <PodcastGrid podcasts={filteredPodcasts} />}
     </section>
   );
 };
