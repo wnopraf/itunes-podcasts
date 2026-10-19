@@ -5,6 +5,7 @@ import type { PodcastDetailResponseApiDto } from '@/modules/podcasts/infrastruct
 import type { PodcastsResponseApiDto } from '@/modules/podcasts/infrastructure/types/PodcastApiDto';
 import episodesFixture from '../fixtures/episodes.json';
 import podcastsFixture from '../fixtures/podcasts.json';
+import { sleep } from './utils';
 
 export const createFixturePodcastRepository = (): PodcastRepository => {
   const podcasts = mapPodcastApiDtoToPodcast(podcastsFixture as unknown as PodcastsResponseApiDto);
@@ -13,8 +14,12 @@ export const createFixturePodcastRepository = (): PodcastRepository => {
   );
 
   return {
-    getTopPodcasts: async () => podcasts,
+    getTopPodcasts: async () => {
+      await sleep(500);
+      return podcasts;
+    },
     getEpisodes: async (_podcastId) => {
+      await sleep(500);
       void _podcastId;
       return episodes;
     },
