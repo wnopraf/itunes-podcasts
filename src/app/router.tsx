@@ -5,7 +5,7 @@ import { PODCAST_PATHS } from '@/modules/podcasts/presentation/utils/routes';
 import { EpisodeListPage } from '@/pages/EpisodeListPage';
 import { EpisodePlayerPage } from '@/pages/EpisodePlayerPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
-import { PodcastListPage } from '@/pages/PodcastListPage';
+import { PodcastListPage } from '@/pages/PodcastListPage/PodcastListPage';
 import { RouteErrorPage } from '@/pages/RouteErrorPage';
 
 export const router = createBrowserRouter([

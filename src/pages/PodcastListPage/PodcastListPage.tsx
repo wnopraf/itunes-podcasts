@@ -3,6 +3,7 @@ import { useTopPodcasts } from '@/modules/podcasts/presentation/hooks/useTopPodc
 import { filterPodcasts } from '@/modules/podcasts/presentation/utils/filterPodcasts';
 import { PodcastSearch } from '@/modules/podcasts/presentation/components/PodcastSearch/PodcastSearch';
 import { PodcastGrid } from '@/modules/podcasts/presentation/components/PodcastGrid/PodcastGrid';
+import styles from './PodcastListPage.module.css';
 
 export const PodcastListPage = () => {
   const podcasts = useTopPodcasts();
@@ -10,17 +11,17 @@ export const PodcastListPage = () => {
   const deferredQuery = useDeferredValue(query);
   const isFiltering = deferredQuery !== query;
   const hasPodcasts = !!podcasts;
-  const hasResults = hasPodcasts && podcasts.length > 0;
   const filteredPodcasts = useMemo(() => {
     return podcasts ? filterPodcasts(podcasts, deferredQuery) : [];
   }, [podcasts, deferredQuery]);
+  const hasFilteredResults = filteredPodcasts.length > 0;
 
   if (!hasPodcasts) {
     return <div>fale skeleton</div>;
   }
   return (
-    <section>
-      <header>
+    <section className={styles.root}>
+      <header className={styles.header}>
         <PodcastSearch
           podcastCount={podcasts.length}
           label="Search podcasts"
@@ -28,9 +29,9 @@ export const PodcastListPage = () => {
           onValueChange={(value) => setQuery(value)}
         />
       </header>
-      {isFiltering && <div>fale skeleton</div>}
-      {!isFiltering && !hasResults && <p>No results found matching "{query}"</p>}
-      {!isFiltering && hasResults && <PodcastGrid podcasts={filteredPodcasts} />}
+      {isFiltering && hasFilteredResults && <div>fale skeleton</div>}
+      {!isFiltering && !hasFilteredResults && <p>No results found matching "{query}"</p>}
+      {!isFiltering && hasFilteredResults && <PodcastGrid podcasts={filteredPodcasts} />}
     </section>
   );
 };
