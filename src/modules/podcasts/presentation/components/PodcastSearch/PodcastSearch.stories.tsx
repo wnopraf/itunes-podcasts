@@ -7,7 +7,7 @@ const meta = {
   title: 'Podcasts/PodcastSearch',
   component: PodcastSearch,
   args: {
-    podcastCount: '100',
+    podcastCount: 100,
     label: 'Search',
     hideLabel: true,
     value: '',

@@ -2,7 +2,7 @@ import type { ComponentProps } from 'react';
 import { Input } from '@/shared/presentation/components/Input/Input';
 import styles from './PodcastSearch.module.css';
 
-type PodcastSearchProps = { podcastCount: string } & ComponentProps<typeof Input>;
+type PodcastSearchProps = { podcastCount: number } & ComponentProps<typeof Input>;
 
 export const PodcastSearch = ({ podcastCount, ...rest }: PodcastSearchProps) => {
   return (
