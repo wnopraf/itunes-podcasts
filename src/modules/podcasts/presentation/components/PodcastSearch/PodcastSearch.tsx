@@ -8,7 +8,7 @@ export const PodcastSearch = ({ podcastCount, ...rest }: PodcastSearchProps) => 
   return (
     <div className={styles.root}>
       <span className={styles.count}>{podcastCount}</span>
-      <Input placeholder={`Search podcasts`} {...rest} />
+      <Input placeholder={`Filter podcasts...`} {...rest} hideLabel />
     </div>
   );
 };
