@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-block-end: 1rem;
+    margin-block-end: var(--space-8);
     @container (inline-size >= 37.5rem) {
       justify-content: end;
     }
