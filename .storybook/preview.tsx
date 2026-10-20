@@ -8,9 +8,9 @@ const podcastRepository = createFixturePodcastRepository();
 
 const preview: Preview = {
   decorators: [
-    (Story) => (
+    (Story, { parameters }) => (
       <AppProviders podcastRepository={podcastRepository}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={parameters.router?.initialEntries}>
           <Story />
         </MemoryRouter>
       </AppProviders>
