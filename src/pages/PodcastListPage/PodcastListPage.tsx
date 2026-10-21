@@ -3,6 +3,7 @@ import { useTopPodcasts } from '@/modules/podcasts/presentation/hooks/useTopPodc
 import { filterPodcasts } from '@/modules/podcasts/presentation/utils/filterPodcasts';
 import { PodcastSearch } from '@/modules/podcasts/presentation/components/PodcastSearch/PodcastSearch';
 import { PodcastGrid } from '@/modules/podcasts/presentation/components/PodcastGrid/PodcastGrid';
+import { PodcastGridSkeleton } from '@/modules/podcasts/presentation/components/PodcastGrid/PodcastGridSkeleton';
 import styles from './PodcastListPage.module.css';
 
 export const PodcastListPage = () => {
@@ -17,19 +18,23 @@ export const PodcastListPage = () => {
   const hasFilteredResults = filteredPodcasts.length > 0;
 
   if (!hasPodcasts) {
-    return <div>fale skeleton</div>;
+    return (
+      <section className={styles.root}>
+        <PodcastGridSkeleton />
+      </section>
+    );
   }
   return (
     <section className={styles.root}>
       <header className={styles.header}>
         <PodcastSearch
-          podcastCount={podcasts.length}
+          podcastCount={filteredPodcasts.length}
           label="Search podcasts"
           value={query}
           onValueChange={(value) => setQuery(value)}
         />
       </header>
-      {isFiltering && hasFilteredResults && <div>fale skeleton</div>}
+      {isFiltering && hasFilteredResults && <PodcastGridSkeleton />}
       {!isFiltering && !hasFilteredResults && <p>No results found matching "{query}"</p>}
       {!isFiltering && hasFilteredResults && <PodcastGrid podcasts={filteredPodcasts} />}
     </section>
