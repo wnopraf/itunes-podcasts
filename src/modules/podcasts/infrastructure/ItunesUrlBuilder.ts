@@ -44,6 +44,7 @@ export class ItunesUrlBuilder {
   }
 
   private withProxy(targetUrl: string) {
+    if (!this.proxyUrl) return targetUrl;
     const url = new URL(this.proxyUrl);
     url.searchParams.set('url', targetUrl);
     return url.toString();
