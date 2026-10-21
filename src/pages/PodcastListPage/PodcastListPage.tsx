@@ -16,6 +16,7 @@ export const PodcastListPage = () => {
     return podcasts ? filterPodcasts(podcasts, deferredQuery) : [];
   }, [podcasts, deferredQuery]);
   const hasFilteredResults = filteredPodcasts.length > 0;
+  const resultsClassName = [styles.results, isFiltering && styles.stale].filter(Boolean).join(' ');
 
   if (!hasPodcasts) {
     return (
@@ -34,9 +35,13 @@ export const PodcastListPage = () => {
           onValueChange={(value) => setQuery(value)}
         />
       </header>
-      {isFiltering && hasFilteredResults && <PodcastGridSkeleton />}
-      {!isFiltering && !hasFilteredResults && <p>No results found matching "{query}"</p>}
-      {!isFiltering && hasFilteredResults && <PodcastGrid podcasts={filteredPodcasts} />}
+      <div className={resultsClassName} aria-busy={isFiltering}>
+        {hasFilteredResults ? (
+          <PodcastGrid podcasts={filteredPodcasts} />
+        ) : (
+          <p>No results found matching "{deferredQuery}"</p>
+        )}
+      </div>
     </section>
   );
 };
