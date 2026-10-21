@@ -12,9 +12,7 @@ const [episode] = fixtureEpisodes;
 const meta = {
   title: 'Podcasts/Layouts/PodcastDetailLayout',
   component: PodcastDetailLayout,
-  parameters: {
-    layout: 'padded',
-  },
+  parameters: {},
   render: () => (
     <div className="container">
       <Routes>

@@ -1,4 +1,9 @@
 @layer components {
+  .scroller {
+    overflow-x: auto;
+    max-inline-size: 100%;
+  }
+
   .table {
     inline-size: 100%;
     border-collapse: collapse;
@@ -12,6 +17,11 @@
       text-align: start;
     }
 
+    th:not(:first-child),
+    td:not(:first-child) {
+      white-space: nowrap;
+      inline-size: 1%;
+    }
     th {
       font-weight: var(--font-weight-bold);
       border-bottom: 3px solid var(--color-border);

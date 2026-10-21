@@ -11,25 +11,27 @@ type EpisodeTableProps = {
 
 export const EpisodeTable = ({ episodes }: EpisodeTableProps) => (
   <Card>
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Date</th>
-          <th>Duration</th>
-        </tr>
-      </thead>
-      <tbody>
-        {episodes.map((episode) => (
-          <tr key={episode.id}>
-            <td>
-              <Link to={toEpisode(episode.podcastId, episode.id)}>{episode.title}</Link>
-            </td>
-            <td>{formatDate(episode.pubDate)}</td>
-            <td>{formatDuration(episode.durationMs)}</td>
+    <div className={styles.scroller} role="region" aria-label="Episodes" tabIndex={0}>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Duration</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {episodes.map((episode) => (
+            <tr key={episode.id}>
+              <td>
+                <Link to={toEpisode(episode.podcastId, episode.id)}>{episode.title}</Link>
+              </td>
+              <td>{formatDate(episode.pubDate)}</td>
+              <td>{formatDuration(episode.durationMs)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   </Card>
 );
