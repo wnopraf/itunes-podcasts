@@ -11,10 +11,10 @@ export const PodcastListPage = () => {
   const [query, setQuery] = useState('');
   const deferredQuery = useDeferredValue(query);
   const isFiltering = deferredQuery !== query;
-  const hasPodcasts = !!podcasts;
+  const hasPodcasts = useMemo(() => !!podcasts, [podcasts]);
   const filteredPodcasts = useMemo(() => {
-    return podcasts ? filterPodcasts(podcasts, deferredQuery) : [];
-  }, [podcasts, deferredQuery]);
+    return hasPodcasts ? filterPodcasts(podcasts!, deferredQuery) : [];
+  }, [hasPodcasts, podcasts, deferredQuery]);
   const hasFilteredResults = filteredPodcasts.length > 0;
   const resultsClassName = [styles.results, isFiltering && styles.stale].filter(Boolean).join(' ');
 
