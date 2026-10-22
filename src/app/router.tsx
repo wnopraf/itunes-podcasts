@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router';
-import { AppLayout } from '@/app/layouts/AppLayout';
+import { RootLayout } from '@/app/layouts/RootLayout';
 import { PodcastDetailLayout } from '@/modules/podcasts/presentation/layouts/PodcastDetailLayout';
 import { PODCAST_PATHS } from '@/modules/podcasts/presentation/utils/routes';
 import { EpisodeListPage } from '@/pages/EpisodeListPage';
@@ -10,7 +10,7 @@ import { RouteErrorPage } from '@/pages/RouteErrorPage';
 
 export const router = createBrowserRouter([
   {
-    Component: AppLayout,
+    Component: RootLayout,
     children: [
       {
         ErrorBoundary: RouteErrorPage,
