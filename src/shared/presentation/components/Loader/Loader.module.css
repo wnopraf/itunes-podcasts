@@ -1,24 +1,29 @@
 @layer components {
   .root {
-    width: 24px;
-    height: 24px;
+    position: relative;
+    width: 16px;
+    height: 16px;
     background-color: var(--color-primary);
     border-radius: var(--radius-full);
-    animation: pulse 1s linear infinite;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background-color: var(--color-primary);
+      animation: pulse 1.5s var(--easing-standard) infinite;
+    }
   }
 }
 
 @keyframes pulse {
-  0% {
+  from {
     transform: scale(1);
-    box-shadow: 0 0 0 0 var(--color-primary);
+    opacity: 0.6;
   }
-  50% {
-    transform: scale(1.1);
-    box-shadow: 0 0 0 10px transparent;
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 var(--color-primary);
+  to {
+    transform: scale(1.8);
+    opacity: 0;
   }
 }
