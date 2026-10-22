@@ -1,7 +1,12 @@
-import { createContext, use, type Dispatch, type SetStateAction } from 'react';
+import { createContext, use } from 'react';
+
+export interface LoadingTracker {
+  startLoad: () => void;
+  endLoad: () => void;
+}
 
 export const LoadingStateContext = createContext<boolean | null>(null);
-export const LoadingSetterContext = createContext<Dispatch<SetStateAction<boolean>> | null>(null);
+export const LoadingTrackerContext = createContext<LoadingTracker | null>(null);
 
 export const useIsLoading = (): boolean => {
   const isLoading = use(LoadingStateContext);
@@ -9,8 +14,8 @@ export const useIsLoading = (): boolean => {
   return isLoading;
 };
 
-export const useSetLoading = (): Dispatch<SetStateAction<boolean>> => {
-  const setLoading = use(LoadingSetterContext);
-  if (!setLoading) throw new Error('useSetLoading must be used within LoadingProvider');
-  return setLoading;
+export const useLoadingTracker = (): LoadingTracker => {
+  const tracker = use(LoadingTrackerContext);
+  if (!tracker) throw new Error('useLoadingTracker must be used within LoadingProvider');
+  return tracker;
 };

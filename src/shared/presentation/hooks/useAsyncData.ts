@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useSetLoading } from '../contexts/LoadingContext';
+import { useLoadingTracker } from '../contexts/LoadingContext';
 
 const toError = (error: unknown) => (error instanceof Error ? error : new Error(String(error)));
 
 export const useAsyncData = <T>(fetcher: (signal: AbortSignal) => Promise<T>): T | null => {
-  const setLoading = useSetLoading();
+  const { startLoad, endLoad } = useLoadingTracker();
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<Error | null>(null);
 
@@ -12,28 +12,21 @@ export const useAsyncData = <T>(fetcher: (signal: AbortSignal) => Promise<T>): T
     const controller = new AbortController();
 
     const loadData = async () => {
-      setLoading(true);
+      startLoad();
       setError(null);
-
       try {
         const result = await fetcher(controller.signal);
-        if (controller.signal.aborted) return;
-        setData(result);
+        if (!controller.signal.aborted) setData(result);
       } catch (err) {
-        if (controller.signal.aborted) return;
-        setError(toError(err));
+        if (!controller.signal.aborted) setError(toError(err));
       }
-
-      setLoading(false);
+      endLoad();
     };
 
     loadData();
 
-    return () => {
-      controller.abort();
-      setLoading(false);
-    };
-  }, [fetcher, setLoading]);
+    return () => controller.abort();
+  }, [fetcher, startLoad, endLoad]);
 
   if (error) throw error;
   return data;
