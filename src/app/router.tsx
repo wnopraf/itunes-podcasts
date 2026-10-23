@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, type RouteObject } from 'react-router';
 import { RootLayout } from '@/app/layouts/RootLayout';
 import { PodcastDetailLayout } from '@/modules/podcasts/presentation/layouts/PodcastDetailLayout';
 import { PODCAST_PATHS } from '@/modules/podcasts/presentation/utils/routes';
@@ -8,7 +8,7 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
 import { PodcastListPage } from '@/pages/PodcastListPage/PodcastListPage';
 import { RouteErrorPage } from '@/pages/RouteErrorPage';
 
-export const router = createBrowserRouter([
+export const routes: RouteObject[] = [
   {
     Component: RootLayout,
     children: [
@@ -29,4 +29,6 @@ export const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
+
+export const router = createBrowserRouter(routes);
