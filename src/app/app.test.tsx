@@ -27,7 +27,7 @@ const renderApp = (repository: PodcastRepository, initialPath = '/') => {
   return { router, user: userEvent.setup() };
 };
 
-const queryLoader = () => screen.queryByRole('status', { name: 'Loading' });
+const queryLoader = () => screen.queryByRole('progressbar', { name: 'Loading' });
 
 describe('App navigation', () => {
   it('navigates through podcast list, podcast detail and episode showing loading states', async () => {

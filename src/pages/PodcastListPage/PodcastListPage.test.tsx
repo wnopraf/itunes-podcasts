@@ -31,7 +31,7 @@ describe('PodcastListPage', () => {
     const { promise, resolve } = Promise.withResolvers<Podcast[]>();
     renderPage(createRepository(() => promise));
 
-    expect(screen.getByRole('status', { name: 'Loading' })).toBeInTheDocument();
+    expect(screen.getByRole('progressbar', { name: 'Loading' })).toBeInTheDocument();
     expect(screen.getByRole('list', { name: 'Loading podcasts' })).toHaveAttribute(
       'aria-busy',
       'true',
@@ -40,7 +40,7 @@ describe('PodcastListPage', () => {
     resolve(fixturePodcasts);
 
     expect(await screen.findByLabelText('Search podcasts')).toBeInTheDocument();
-    expect(screen.queryByRole('status', { name: 'Loading' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('progressbar', { name: 'Loading' })).not.toBeInTheDocument();
     expect(screen.queryByRole('list', { name: 'Loading podcasts' })).not.toBeInTheDocument();
   });
 
