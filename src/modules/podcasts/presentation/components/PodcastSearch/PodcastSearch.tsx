@@ -7,7 +7,12 @@ type PodcastSearchProps = { podcastCount: number } & ComponentProps<typeof Input
 export const PodcastSearch = ({ podcastCount, ...rest }: PodcastSearchProps) => {
   return (
     <div className={styles.root}>
-      <span className={styles.count}>{podcastCount}</span>
+      <output
+        className={styles.count}
+        aria-label={`${podcastCount} ${podcastCount === 1 ? 'result' : 'results'}`}
+      >
+        {podcastCount}
+      </output>
       <Input placeholder={`Filter podcasts...`} {...rest} hideLabel />
     </div>
   );
