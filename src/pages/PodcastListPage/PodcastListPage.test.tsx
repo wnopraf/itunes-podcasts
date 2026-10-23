@@ -50,11 +50,15 @@ describe('PodcastListPage', () => {
 
     const search = await screen.findByLabelText('Search podcasts');
     expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(fixturePodcasts.length);
+    expect(
+      screen.getByRole('status', { name: `${fixturePodcasts.length} results` }),
+    ).toBeInTheDocument();
 
     await user.type(search, 'joe');
 
     const titles = screen.getAllByRole('heading', { level: 3 }).map((h) => h.textContent);
     expect(titles).toEqual(['The Joe Budden Podcast', 'Joe and Jada']);
+    expect(screen.getByRole('status', { name: '2 results' })).toBeInTheDocument();
 
     await user.clear(search);
     await user.type(search, 'hrishikesh');
@@ -62,10 +66,12 @@ describe('PodcastListPage', () => {
     const [result] = screen.getAllByRole('listitem');
     expect(within(result).getByRole('heading', { name: 'Song Exploder' })).toBeInTheDocument();
     expect(screen.getAllByRole('listitem')).toHaveLength(1);
+    expect(screen.getByRole('status', { name: '1 result' })).toBeInTheDocument();
 
     await user.clear(search);
     await user.type(search, 'not-a-podcast');
 
     expect(screen.getByText('No results found matching "not-a-podcast"')).toBeInTheDocument();
+    expect(screen.getByRole('status', { name: '0 results' })).toBeInTheDocument();
   });
 });
