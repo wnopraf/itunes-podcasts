@@ -1,4 +1,5 @@
 import type { CacheStore } from '@/shared/infrastructure/cache/CacheStore';
+import type { PodcastCacheReader } from '../application/ports/PodcastCacheReader';
 import type { Episode } from '../domain/Episode';
 import type { Podcast } from '../domain/Podcast';
 
@@ -14,7 +15,7 @@ const deserializeEpisode = (episode: SerializedEpisode): Episode => ({
   pubDate: new Date(episode.pubDate),
 });
 
-export class PodcastCache {
+export class PodcastCache implements PodcastCacheReader {
   private readonly cache: CacheStore;
   private readonly ttlMs: number;
 
