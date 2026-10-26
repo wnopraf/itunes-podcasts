@@ -3,14 +3,18 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes } from 'react-router';
 import { AppLayout } from '@/app/layouts/AppLayout';
 import { AppProviders } from '@/app/providers/AppProviders';
+import type { PodcastCacheReader } from '@/modules/podcasts/application/ports/PodcastCacheReader';
 import type { Podcast } from '@/modules/podcasts/domain/Podcast';
 import type { PodcastRepository } from '@/modules/podcasts/domain/PodcastRepository';
 import { fixtureEpisodes, fixturePodcasts } from '@/test/fixtures/podcastFixtures';
 import { PodcastListPage } from './PodcastListPage';
 
-const renderPage = (podcastRepository: PodcastRepository) =>
+const renderPage = (
+  podcastRepository: PodcastRepository,
+  podcastCacheReader?: PodcastCacheReader,
+) =>
   render(
-    <AppProviders podcastRepository={podcastRepository}>
+    <AppProviders podcastRepository={podcastRepository} podcastCacheReader={podcastCacheReader}>
       <MemoryRouter>
         <Routes>
           <Route element={<AppLayout />}>
@@ -42,6 +46,19 @@ describe('PodcastListPage', () => {
     expect(await screen.findByLabelText('Search podcasts')).toBeInTheDocument();
     expect(screen.queryByRole('progressbar', { name: 'Loading' })).not.toBeInTheDocument();
     expect(screen.queryByRole('list', { name: 'Loading podcasts' })).not.toBeInTheDocument();
+  });
+
+  it('renders cached podcasts on first render without loader, skeleton or fetch', () => {
+    const getTopPodcasts = vi.fn<PodcastRepository['getTopPodcasts']>();
+    renderPage(createRepository(getTopPodcasts), {
+      getTopPodcasts: () => fixturePodcasts,
+      getEpisodes: () => null,
+    });
+
+    expect(screen.getByLabelText('Search podcasts')).toBeInTheDocument();
+    expect(screen.queryByRole('list', { name: 'Loading podcasts' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('progressbar', { name: 'Loading' })).not.toBeInTheDocument();
+    expect(getTopPodcasts).not.toHaveBeenCalled();
   });
 
   it('filters podcasts by title and author', async () => {
