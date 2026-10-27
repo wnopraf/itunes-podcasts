@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryRouter, RouterProvider } from 'react-router';
 import type { Episode } from '@/modules/podcasts/domain/Episode';
@@ -28,6 +28,7 @@ const renderApp = (repository: PodcastRepository, initialPath = '/') => {
 };
 
 const queryLoader = () => screen.queryByRole('progressbar', { name: 'Loading' });
+const waitForLoader = () => waitFor(() => expect(queryLoader()).toBeInTheDocument());
 
 describe('App navigation', () => {
   it('navigates through podcast list, podcast detail and episode showing loading states', async () => {
@@ -41,8 +42,8 @@ describe('App navigation', () => {
     const { router, user } = renderApp(repository);
 
     // Podcast list: loading
-    expect(queryLoader()).toBeInTheDocument();
-    expect(screen.getByRole('list', { name: 'Loading podcasts' })).toBeInTheDocument();
+    expect(await screen.findByRole('list', { name: 'Loading podcasts' })).toBeInTheDocument();
+    await waitForLoader();
 
     homePodcasts.resolve(fixturePodcasts);
 
@@ -55,16 +56,23 @@ describe('App navigation', () => {
     await user.click(podcastLink);
 
     // Podcast detail: loading podcast and episodes
-    expect(router.state.location.pathname).toBe(`/podcast/${SONG_EXPLODER_ID}`);
-    expect(repository.getEpisodes).toHaveBeenCalledWith(SONG_EXPLODER_ID, expect.any(AbortSignal));
-    expect(queryLoader()).toBeInTheDocument();
+    await waitFor(() =>
+      expect(router.state.location.pathname).toBe(`/podcast/${SONG_EXPLODER_ID}`),
+    );
+    await waitFor(() =>
+      expect(repository.getEpisodes).toHaveBeenCalledWith(
+        SONG_EXPLODER_ID,
+        expect.any(AbortSignal),
+      ),
+    );
+    await waitForLoader();
     expect(screen.getByRole('table', { name: 'Loading episodes' })).toBeInTheDocument();
     expect(screen.queryByRole('heading', { name: 'Song Exploder' })).not.toBeInTheDocument();
 
     detailPodcasts.resolve(fixturePodcasts);
 
     // Podcast detail: podcast loaded, episodes still loading
-    const sidebar = screen.getByRole('complementary');
+    const sidebar = await screen.findByRole('complementary');
     expect(
       await within(sidebar).findByRole('heading', { name: 'Song Exploder' }),
     ).toBeInTheDocument();
@@ -82,10 +90,12 @@ describe('App navigation', () => {
     await user.click(screen.getByRole('link', { name: firstEpisode.title }));
 
     // Episode player: reuses loaded data, no new requests
-    expect(router.state.location.pathname).toBe(
-      `/podcast/${SONG_EXPLODER_ID}/episode/${firstEpisode.id}`,
+    await waitFor(() =>
+      expect(router.state.location.pathname).toBe(
+        `/podcast/${SONG_EXPLODER_ID}/episode/${firstEpisode.id}`,
+      ),
     );
-    expect(screen.getByRole('heading', { name: firstEpisode.title })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: firstEpisode.title })).toBeInTheDocument();
     expect(document.querySelector('audio')).toHaveAttribute('src', firstEpisode.url);
     expect(within(sidebar).getByRole('heading', { name: 'Song Exploder' })).toBeInTheDocument();
     expect(queryLoader()).not.toBeInTheDocument();
@@ -94,17 +104,19 @@ describe('App navigation', () => {
     await user.click(within(sidebar).getByRole('link', { name: /Hrishikesh Hirway/ }));
 
     // Back to episode list from sidebar
-    expect(router.state.location.pathname).toBe(`/podcast/${SONG_EXPLODER_ID}`);
-    expect(screen.getByText(`Episodes: ${fixtureEpisodes.length}`)).toBeInTheDocument();
+    await waitFor(() =>
+      expect(router.state.location.pathname).toBe(`/podcast/${SONG_EXPLODER_ID}`),
+    );
+    expect(await screen.findByText(`Episodes: ${fixtureEpisodes.length}`)).toBeInTheDocument();
     expect(repository.getEpisodes).toHaveBeenCalledTimes(1);
 
     repository.getTopPodcasts.mockReturnValue(backHomePodcasts.promise);
     await user.click(screen.getByRole('link', { name: 'Podcaster' }));
 
     // Back home: list is fetched again
-    expect(router.state.location.pathname).toBe('/');
-    expect(queryLoader()).toBeInTheDocument();
-    expect(screen.getByRole('list', { name: 'Loading podcasts' })).toBeInTheDocument();
+    await waitFor(() => expect(router.state.location.pathname).toBe('/'));
+    expect(await screen.findByRole('list', { name: 'Loading podcasts' })).toBeInTheDocument();
+    await waitForLoader();
 
     backHomePodcasts.resolve(fixturePodcasts);
 
@@ -122,7 +134,7 @@ describe('App navigation', () => {
 
     await user.click(screen.getByRole('link', { name: 'Back to podcasts' }));
 
-    expect(router.state.location.pathname).toBe('/');
+    await waitFor(() => expect(router.state.location.pathname).toBe('/'));
     expect(await screen.findByLabelText('Search podcasts')).toBeInTheDocument();
   });
 
@@ -134,7 +146,8 @@ describe('App navigation', () => {
     repository.getTopPodcasts.mockReturnValue(podcasts.promise);
     renderApp(repository);
 
-    expect(queryLoader()).toBeInTheDocument();
+    await waitForLoader();
+    await waitFor(() => expect(repository.getTopPodcasts).toHaveBeenCalled());
 
     podcasts.reject(new Error('Network down'));
 

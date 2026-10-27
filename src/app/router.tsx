@@ -1,12 +1,9 @@
 import { createBrowserRouter, type RouteObject } from 'react-router';
 import { RootLayout } from '@/app/layouts/RootLayout';
-import { PodcastDetailLayout } from '@/modules/podcasts/presentation/layouts/PodcastDetailLayout';
 import { PODCAST_PATHS } from '@/modules/podcasts/presentation/utils/routes';
-import { EpisodeListPage } from '@/pages/EpisodeListPage/EpisodeListPage';
-import { EpisodePlayerPage } from '@/pages/EpisodePlayerPage/EpisodePlayerPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
-import { PodcastListPage } from '@/pages/PodcastListPage/PodcastListPage';
 import { RouteErrorPage } from '@/pages/RouteErrorPage';
+import { Loader } from '@/shared/presentation/components/Loader/Loader';
 
 export const routes: RouteObject[] = [
   {
@@ -14,14 +11,36 @@ export const routes: RouteObject[] = [
     children: [
       {
         ErrorBoundary: RouteErrorPage,
+        HydrateFallback: Loader,
         children: [
-          { path: PODCAST_PATHS.HOME, Component: PodcastListPage },
+          {
+            path: PODCAST_PATHS.HOME,
+            lazy: async () => ({
+              Component: (await import('@/pages/PodcastListPage/PodcastListPage')).PodcastListPage,
+            }),
+          },
           {
             path: PODCAST_PATHS.PODCAST,
-            Component: PodcastDetailLayout,
+            lazy: async () => ({
+              Component: (
+                await import('@/modules/podcasts/presentation/layouts/PodcastDetailLayout')
+              ).PodcastDetailLayout,
+            }),
             children: [
-              { index: true, Component: EpisodeListPage },
-              { path: PODCAST_PATHS.EPISODE, Component: EpisodePlayerPage },
+              {
+                index: true,
+                lazy: async () => ({
+                  Component: (await import('@/pages/EpisodeListPage/EpisodeListPage'))
+                    .EpisodeListPage,
+                }),
+              },
+              {
+                path: PODCAST_PATHS.EPISODE,
+                lazy: async () => ({
+                  Component: (await import('@/pages/EpisodePlayerPage/EpisodePlayerPage'))
+                    .EpisodePlayerPage,
+                }),
+              },
             ],
           },
           { path: '*', Component: NotFoundPage },
