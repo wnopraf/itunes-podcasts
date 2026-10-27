@@ -39,7 +39,7 @@ export const PodcastListPage = () => {
         {hasFilteredResults ? (
           <PodcastGrid podcasts={filteredPodcasts} />
         ) : (
-          <p>No results found matching "{deferredQuery}"</p>
+          <p className={styles.empty}>No results found matching "{deferredQuery}"</p>
         )}
       </div>
     </section>
