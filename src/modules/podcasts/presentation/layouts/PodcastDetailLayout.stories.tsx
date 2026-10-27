@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Route, Routes } from 'react-router';
-import { EpisodeListPage } from '@/pages/EpisodeListPage';
-import { EpisodePlayerPage } from '@/pages/EpisodePlayerPage';
+import { EpisodeListPage } from '@/pages/EpisodeListPage/EpisodeListPage';
+import { EpisodePlayerPage } from '@/pages/EpisodePlayerPage/EpisodePlayerPage';
 import { fixtureEpisodes, fixturePodcasts } from '@/test/fixtures/podcastFixtures';
 import { PODCAST_PATHS, toEpisode, toPodcast } from '../utils/routes';
 import { PodcastDetailLayout } from './PodcastDetailLayout';

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
 import { EpisodeDetail } from '@/modules/podcasts/presentation/components/EpisodeDetail/EpisodeDetail';
 import { usePodcastOutletContext } from '@/modules/podcasts/presentation/contexts/PodcastOutletContext';
-import { NotFoundPage } from './NotFoundPage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export const EpisodePlayerPage = () => {
   const { episodeId = '' } = useParams();
