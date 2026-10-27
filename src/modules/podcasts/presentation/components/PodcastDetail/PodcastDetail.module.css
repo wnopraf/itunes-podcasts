@@ -22,7 +22,7 @@
   }
 
   .author {
-    composes: italic from global;
+    composes: text-muted from global;
   }
 
   .label {
@@ -32,7 +32,7 @@
   }
 
   .description {
-    composes: italic from global;
+    composes: text-muted from global;
   }
 
   .divider {

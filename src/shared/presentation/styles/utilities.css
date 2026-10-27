@@ -21,9 +21,10 @@
     color: inherit;
   }
 
-  .italic {
+  .text-muted {
     font-size: var(--font-size-sm);
     font-style: italic;
     color: var(--color-text-muted);
+    overflow-wrap: anywhere;
   }
 }

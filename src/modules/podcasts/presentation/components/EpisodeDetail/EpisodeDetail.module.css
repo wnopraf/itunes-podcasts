@@ -10,7 +10,7 @@
   }
 
   .description {
-    composes: italic from global;
+    composes: text-muted from global;
   }
 
   .divider {
