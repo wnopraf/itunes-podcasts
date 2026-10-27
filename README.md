@@ -2,7 +2,7 @@
 
 Mini-app for browsing and listening to the top music podcasts from Apple, built as a frontend technical assessment.
 
-Live demo: <add deployment URL>
+Live demo: <https://itunes-top-podcasts.vercel.app/>
 
 ---
 
