@@ -17,9 +17,10 @@ export const EpisodeDetail = ({ episode }: EpisodeDetailProps) => {
   return (
     <Card className={styles.root}>
       <h3 className={styles.title}>{episode.title}</h3>
-      <div className={styles.description}>
-        <p>{sanitizedDescription}</p>
-      </div>
+      <div
+        className={styles.description}
+        dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
+      />
       <hr className={styles.divider} />
       <audio controls preload="metadata" src={episode.url} className={styles.player} />
     </Card>
