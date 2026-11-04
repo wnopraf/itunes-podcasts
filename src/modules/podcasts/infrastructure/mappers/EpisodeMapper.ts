@@ -10,12 +10,12 @@ export const mapEpisodeApiDtoToEpisode = (dto: PodcastDetailResponseApiDto): Epi
   return results
     .filter((episode): episode is EpisodeApiDto => episode.wrapperType === 'podcastEpisode')
     .map((episode) => ({
-      id: episode.trackId,
+      id: episode.trackId.toString(),
       title: episode.trackName,
       description: episode.description ?? episode.shortDescription ?? '',
       durationMs: episode.trackTimeMillis,
       pubDate: new Date(episode.releaseDate),
       url: episode.episodeUrl,
-      podcastId: episode.collectionId,
+      podcastId: episode.collectionId.toString(),
     }));
 };

@@ -8,7 +8,7 @@ export const EpisodePlayerPage = () => {
   const { episodes } = usePodcastOutletContext();
   if (!episodes) return null;
 
-  const episode = episodes.find(({ id }) => id.toString() === episodeId);
+  const episode = episodes.find(({ id }) => id === episodeId);
   if (!episode) return <NotFoundPage />;
 
   return <EpisodeDetail episode={episode} />;

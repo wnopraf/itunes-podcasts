@@ -37,6 +37,6 @@ export const Default: Story = {
 
 export const NotFound: Story = {
   parameters: {
-    router: { initialEntries: [toEpisode(episode.podcastId, 0)] },
+    router: { initialEntries: [toEpisode(episode.podcastId, '0')] },
   },
 };

@@ -36,6 +36,6 @@ export const EpisodeList: Story = {
 
 export const EpisodePlayer: Story = {
   parameters: {
-    router: { initialEntries: [toEpisode(Number(podcast.id), episode.id)] },
+    router: { initialEntries: [toEpisode(podcast.id, episode.id)] },
   },
 };
