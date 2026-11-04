@@ -4,7 +4,7 @@ import type { PodcastRepository } from '../domain/PodcastRepository';
 import type { ItunesUrlBuilder } from './ItunesUrlBuilder';
 import { mapEpisodeApiDtoToEpisode } from './mappers/EpisodeMapper';
 import { mapPodcastApiDtoToPodcast } from './mappers/PodcastMapper';
-import type { PodcastDetailResponseApiDto } from './types/EpisodeApiDto';
+import type { PodcastDetailResponseApiDto } from './types/PodcastDetailApiDto';
 import type { PodcastsResponseApiDto } from './types/PodcastApiDto';
 
 export class ItunesPodcastRepository implements PodcastRepository {

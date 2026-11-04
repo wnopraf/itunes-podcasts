@@ -1,5 +1,5 @@
 import type { Episode } from '@/modules/podcasts/domain/Episode';
-import type { EpisodeApiDto, PodcastDetailResponseApiDto } from '../types/EpisodeApiDto';
+import type { EpisodeApiDto, PodcastDetailResponseApiDto } from '../types/PodcastDetailApiDto';
 import type { PodcastLookupApiDto } from '../types/PodcastApiDto';
 
 export const mapEpisodeApiDtoToEpisode = (dto: PodcastDetailResponseApiDto): Episode[] => {
