@@ -1,5 +1,9 @@
 import type { PodcastRepository } from '@/modules/podcasts/domain/PodcastRepository';
-import { fixtureEpisodes, fixturePodcasts } from '../fixtures/podcastFixtures';
+import {
+  fixtureEpisodes,
+  fixturePodcastDetail,
+  fixturePodcasts,
+} from '../fixtures/podcastFixtures';
 import { sleep } from './utils';
 
 export const createFixturePodcastRepository = (): PodcastRepository => ({
@@ -11,5 +15,10 @@ export const createFixturePodcastRepository = (): PodcastRepository => ({
     await sleep(500);
     void _podcastId;
     return fixtureEpisodes;
+  },
+  getPodcastDetail: async (_podcastId) => {
+    await sleep(500);
+    void _podcastId;
+    return fixturePodcastDetail;
   },
 });
