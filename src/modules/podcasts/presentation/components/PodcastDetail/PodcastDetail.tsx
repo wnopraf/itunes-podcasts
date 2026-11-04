@@ -25,7 +25,7 @@ export const PodcastDetail = ({ podcast }: PodcastDetailProps) => (
     <hr className={styles.divider} />
     <div className={styles.section}>
       <p className={styles.label}>Descripción</p>
-      <p className={styles.description}>{podcast.description}</p>
+      <p className={styles.description}>{podcast.description ?? 'Descripción no disponible'}</p>
     </div>
   </Card>
 );
