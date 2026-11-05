@@ -1,10 +1,15 @@
 import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryRouter, RouterProvider } from 'react-router';
-import type { Episode } from '@/modules/podcasts/domain/Episode';
 import type { Podcast } from '@/modules/podcasts/domain/Podcast';
+import type { PodcastDetail } from '@/modules/podcasts/domain/PodcastDetail';
+import { PodcastNotFoundError } from '@/modules/podcasts/domain/PodcastNotFoundError';
 import type { PodcastRepository } from '@/modules/podcasts/domain/PodcastRepository';
-import { fixtureEpisodes, fixturePodcasts } from '@/test/fixtures/podcastFixtures';
+import {
+  fixtureEpisodes,
+  fixturePodcastDetail,
+  fixturePodcasts,
+} from '@/test/fixtures/podcastFixtures';
 import { AppProviders } from './providers/AppProviders';
 import { routes } from './router';
 
@@ -36,10 +41,10 @@ describe('App navigation', () => {
     const homePodcasts = Promise.withResolvers<Podcast[]>();
     const detailPodcasts = Promise.withResolvers<Podcast[]>();
     const backHomePodcasts = Promise.withResolvers<Podcast[]>();
-    const episodes = Promise.withResolvers<Episode[]>();
+    const podcastDetail = Promise.withResolvers<PodcastDetail>();
     const repository = createMockRepository();
     repository.getTopPodcasts.mockReturnValue(homePodcasts.promise);
-    repository.getEpisodes.mockReturnValue(episodes.promise);
+    repository.getPodcastDetail.mockReturnValue(podcastDetail.promise);
     const { router, user } = renderApp(repository);
 
     // Podcast list: loading
@@ -56,36 +61,39 @@ describe('App navigation', () => {
     repository.getTopPodcasts.mockReturnValue(detailPodcasts.promise);
     await user.click(podcastLink);
 
-    // Podcast detail: loading podcast and episodes
+    // Podcast detail: podcast detail and top podcasts requested in parallel
     await waitFor(() =>
       expect(router.state.location.pathname).toBe(`/podcast/${SONG_EXPLODER_ID}`),
     );
     await waitFor(() =>
-      expect(repository.getEpisodes).toHaveBeenCalledWith(
+      expect(repository.getPodcastDetail).toHaveBeenCalledWith(
         SONG_EXPLODER_ID,
         expect.any(AbortSignal),
       ),
     );
+    expect(repository.getTopPodcasts).toHaveBeenCalledTimes(2);
     await waitForLoader();
+    expect(screen.getByLabelText('Loading podcast')).toBeInTheDocument();
     expect(screen.getByRole('table', { name: 'Loading episodes' })).toBeInTheDocument();
-    expect(screen.queryByRole('heading', { name: 'Song Exploder' })).not.toBeInTheDocument();
+
+    podcastDetail.resolve(fixturePodcastDetail);
+
+    // Podcast detail: waits for the description from top podcasts
+    await waitFor(() => expect(queryLoader()).toBeInTheDocument());
+    expect(screen.getByLabelText('Loading podcast')).toBeInTheDocument();
 
     detailPodcasts.resolve(fixturePodcasts);
 
-    // Podcast detail: podcast loaded, episodes still loading
+    // Podcast detail: everything loaded
     const sidebar = await screen.findByRole('complementary');
     expect(
       await within(sidebar).findByRole('heading', { name: 'Song Exploder' }),
     ).toBeInTheDocument();
     expect(within(sidebar).getByText('Hrishikesh Hirway')).toBeInTheDocument();
-    expect(queryLoader()).toBeInTheDocument();
-    expect(screen.getByRole('table', { name: 'Loading episodes' })).toBeInTheDocument();
-
-    episodes.resolve(fixtureEpisodes);
-
-    // Podcast detail: everything loaded
+    expect(within(sidebar).getByText('Descripción')).toBeInTheDocument();
     expect(await screen.findByText(`Episodes: ${fixtureEpisodes.length}`)).toBeInTheDocument();
     expect(queryLoader()).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('Loading podcast')).not.toBeInTheDocument();
     expect(screen.queryByRole('table', { name: 'Loading episodes' })).not.toBeInTheDocument();
 
     await user.click(screen.getByRole('link', { name: firstEpisode.title }));
@@ -100,7 +108,7 @@ describe('App navigation', () => {
     expect(document.querySelector('audio')).toHaveAttribute('src', firstEpisode.url);
     expect(within(sidebar).getByRole('heading', { name: 'Song Exploder' })).toBeInTheDocument();
     expect(queryLoader()).not.toBeInTheDocument();
-    expect(repository.getEpisodes).toHaveBeenCalledTimes(1);
+    expect(repository.getPodcastDetail).toHaveBeenCalledTimes(1);
 
     await user.click(within(sidebar).getByRole('link', { name: /Hrishikesh Hirway/ }));
 
@@ -109,7 +117,7 @@ describe('App navigation', () => {
       expect(router.state.location.pathname).toBe(`/podcast/${SONG_EXPLODER_ID}`),
     );
     expect(await screen.findByText(`Episodes: ${fixtureEpisodes.length}`)).toBeInTheDocument();
-    expect(repository.getEpisodes).toHaveBeenCalledTimes(1);
+    expect(repository.getPodcastDetail).toHaveBeenCalledTimes(1);
 
     repository.getTopPodcasts.mockReturnValue(backHomePodcasts.promise);
     await user.click(screen.getByRole('link', { name: 'Podcaster' }));
@@ -122,6 +130,46 @@ describe('App navigation', () => {
     backHomePodcasts.resolve(fixturePodcasts);
 
     expect(await screen.findByLabelText('Search podcasts')).toBeInTheDocument();
+    expect(queryLoader()).not.toBeInTheDocument();
+  });
+
+  it('renders a podcast that is not in the top podcasts when accessed directly', async () => {
+    const repository = createMockRepository();
+    repository.getTopPodcasts.mockResolvedValue([]);
+    repository.getPodcastDetail.mockResolvedValue(fixturePodcastDetail);
+    renderApp(repository, `/podcast/${SONG_EXPLODER_ID}`);
+
+    const sidebar = await screen.findByRole('complementary');
+    expect(
+      await within(sidebar).findByRole('heading', { name: 'Song Exploder' }),
+    ).toBeInTheDocument();
+    expect(within(sidebar).getByText('Hrishikesh Hirway')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Descripción no disponible')).toBeInTheDocument();
+    expect(screen.getByText(`Episodes: ${fixtureEpisodes.length}`)).toBeInTheDocument();
+  });
+
+  it('renders the podcast detail even if top podcasts fail to load', async () => {
+    const repository = createMockRepository();
+    repository.getTopPodcasts.mockRejectedValue(new Error('Network down'));
+    repository.getPodcastDetail.mockResolvedValue(fixturePodcastDetail);
+    renderApp(repository, `/podcast/${SONG_EXPLODER_ID}`);
+
+    const sidebar = await screen.findByRole('complementary');
+    expect(
+      await within(sidebar).findByRole('heading', { name: 'Song Exploder' }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'Something went wrong' })).not.toBeInTheDocument();
+  });
+
+  it('shows the not found page for unknown podcasts', async () => {
+    // hide console errors during test
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    const repository = createMockRepository();
+    repository.getTopPodcasts.mockResolvedValue(fixturePodcasts);
+    repository.getPodcastDetail.mockRejectedValue(new PodcastNotFoundError('0'));
+    renderApp(repository, '/podcast/0');
+
+    expect(await screen.findByRole('heading', { name: 'Page not found' })).toBeInTheDocument();
     expect(queryLoader()).not.toBeInTheDocument();
   });
 

@@ -1,10 +1,8 @@
 import { useOutletContext } from 'react-router';
-import type { Episode } from '../../domain/Episode';
-import type { Podcast } from '../../domain/Podcast';
+import type { PodcastDetail } from '../../domain/PodcastDetail';
 
 export interface PodcastOutletContext {
-  podcast: Podcast | null;
-  episodes: Episode[] | null;
+  detail: PodcastDetail | null;
 }
 
 export const usePodcastOutletContext = () => useOutletContext<PodcastOutletContext>();

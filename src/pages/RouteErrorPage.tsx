@@ -1,8 +1,12 @@
 import { Link, isRouteErrorResponse, useRouteError } from 'react-router';
+import { PodcastNotFoundError } from '@/modules/podcasts/domain/PodcastNotFoundError';
 import { PODCAST_PATHS } from '@/modules/podcasts/presentation/utils/routes';
+import { NotFoundPage } from './NotFoundPage';
 
 export const RouteErrorPage = () => {
   const error = useRouteError();
+  if (error instanceof PodcastNotFoundError) return <NotFoundPage />;
+
   const message = isRouteErrorResponse(error)
     ? `${error.status} ${error.statusText}`
     : error instanceof Error

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { PodcastOutletContext } from '@/modules/podcasts/presentation/contexts/PodcastOutletContext';
-import { fixtureEpisodes, fixturePodcasts } from '@/test/fixtures/podcastFixtures';
+import { fixturePodcastDetail } from '@/test/fixtures/podcastFixtures';
 import { withOutletContext } from '@/test/storybook/withOutletContext';
 import { EpisodeListPage } from './EpisodeListPage';
 
@@ -21,19 +21,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  decorators: [
-    withOutletContext<PodcastOutletContext>({
-      podcast: fixturePodcasts[0],
-      episodes: fixtureEpisodes,
-    }),
-  ],
+  decorators: [withOutletContext<PodcastOutletContext>({ detail: fixturePodcastDetail })],
 };
 
 export const Empty: Story = {
   decorators: [
     withOutletContext<PodcastOutletContext>({
-      podcast: fixturePodcasts[0],
-      episodes: [],
+      detail: { ...fixturePodcastDetail, episodes: [] },
     }),
   ],
 };

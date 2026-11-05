@@ -5,8 +5,8 @@ import { EpisodeTableHeaderSkeleton } from '@/modules/podcasts/presentation/comp
 import { usePodcastOutletContext } from '@/modules/podcasts/presentation/contexts/PodcastOutletContext';
 
 export const EpisodeListPage = () => {
-  const { episodes } = usePodcastOutletContext();
-  if (!episodes) {
+  const { detail } = usePodcastOutletContext();
+  if (!detail) {
     return (
       <>
         <EpisodeTableHeaderSkeleton />
@@ -17,8 +17,8 @@ export const EpisodeListPage = () => {
 
   return (
     <>
-      <EpisodeTableHeader episodeCount={episodes.length} />
-      <EpisodeTable episodes={episodes} />
+      <EpisodeTableHeader episodeCount={detail.episodes.length} />
+      <EpisodeTable episodes={detail.episodes} />
     </>
   );
 };

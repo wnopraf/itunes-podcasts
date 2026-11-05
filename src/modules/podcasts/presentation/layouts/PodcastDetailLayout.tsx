@@ -1,20 +1,21 @@
 import { Outlet, useParams } from 'react-router';
 import styles from './PodcastDetailLayout.module.css';
 import { PodcastDetail } from '../components/PodcastDetail/PodcastDetail';
+import { PodcastDetailSkeleton } from '../components/PodcastDetail/PodcastDetailSkeleton';
 import type { PodcastOutletContext } from '../contexts/PodcastOutletContext';
-import { useEpisodes } from '../hooks/useEpisodes';
-import { usePodcast } from '../hooks/usePodcast';
+import { usePodcastDetail } from '../hooks/usePodcastDetail';
 
 export const PodcastDetailLayout = () => {
   const { podcastId = '' } = useParams();
-  const podcast = usePodcast(podcastId);
-  const episodes = useEpisodes(podcastId);
+  const detail = usePodcastDetail(podcastId);
 
   return (
     <div className={styles.root}>
-      <aside className={styles.sidebar}>{podcast && <PodcastDetail podcast={podcast} />}</aside>
+      <aside className={styles.sidebar}>
+        {detail ? <PodcastDetail podcast={detail.podcast} /> : <PodcastDetailSkeleton />}
+      </aside>
       <section className={styles.content}>
-        <Outlet context={{ podcast, episodes } satisfies PodcastOutletContext} />
+        <Outlet context={{ detail } satisfies PodcastOutletContext} />
       </section>
     </div>
   );
