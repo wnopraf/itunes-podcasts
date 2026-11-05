@@ -5,10 +5,10 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
 
 export const EpisodePlayerPage = () => {
   const { episodeId = '' } = useParams();
-  const { episodes } = usePodcastOutletContext();
-  if (!episodes) return null;
+  const { detail } = usePodcastOutletContext();
+  if (!detail) return null;
 
-  const episode = episodes.find(({ id }) => id.toString() === episodeId);
+  const episode = detail.episodes.find(({ id }) => id === episodeId);
   if (!episode) return <NotFoundPage />;
 
   return <EpisodeDetail episode={episode} />;

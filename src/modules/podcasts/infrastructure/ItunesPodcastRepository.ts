@@ -1,10 +1,11 @@
-import type { Episode } from '../domain/Episode';
 import type { Podcast } from '../domain/Podcast';
+import type { PodcastDetail } from '../domain/PodcastDetail';
+import { PodcastNotFoundError } from '../domain/PodcastNotFoundError';
 import type { PodcastRepository } from '../domain/PodcastRepository';
 import type { ItunesUrlBuilder } from './ItunesUrlBuilder';
-import { mapEpisodeApiDtoToEpisode } from './mappers/EpisodeMapper';
+import { mapPodcastDetailApiDtoToPodcastDetail } from './mappers/PodcastDetailMapper';
 import { mapPodcastApiDtoToPodcast } from './mappers/PodcastMapper';
-import type { PodcastDetailResponseApiDto } from './types/EpisodeApiDto';
+import type { PodcastDetailResponseApiDto } from './types/PodcastDetailApiDto';
 import type { PodcastsResponseApiDto } from './types/PodcastApiDto';
 
 export class ItunesPodcastRepository implements PodcastRepository {
@@ -27,15 +28,19 @@ export class ItunesPodcastRepository implements PodcastRepository {
     }
   }
 
-  async getEpisodes(podcastId: string, signal?: AbortSignal): Promise<Episode[]> {
+  async getPodcastDetail(podcastId: string, signal?: AbortSignal): Promise<PodcastDetail> {
     const url = this.urlBuilder.podcastDetail(podcastId);
     try {
       const response = await fetch(url, { signal });
       if (!response.ok) throw new Error(`Request failed with status ${response.status}: ${url}`);
       const dto: PodcastDetailResponseApiDto = await response.json();
-      return mapEpisodeApiDtoToEpisode(dto);
+      const detail = mapPodcastDetailApiDtoToPodcastDetail(dto);
+      if (!detail) throw new PodcastNotFoundError(podcastId);
+      return detail;
     } catch (error) {
-      if (!signal?.aborted) console.error('[ItunesPodcastRepository] getEpisodes', error);
+      if (!signal?.aborted && !(error instanceof PodcastNotFoundError)) {
+        console.error('[ItunesPodcastRepository] getPodcastDetail', error);
+      }
       throw error;
     }
   }

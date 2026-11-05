@@ -7,6 +7,9 @@ const podcastCount = podcastsFixture.feed.entry.length;
 const episodeCount = episodesFixture.results.filter(
   (r) => r.wrapperType === 'podcastEpisode',
 ).length;
+const songExploderDescription = podcastsFixture.feed.entry.find(
+  (entry) => entry.id.attributes['im:id'] === '788236947',
+)!.summary.label;
 
 const FAKE_NETWORK_DELAY_MS = 100;
 
@@ -69,4 +72,13 @@ test('navigates to podcast detail and episode detail', async ({ page }) => {
   await expect(page).toHaveURL(/\/podcast\/788236947\/episode\/1000793533297$/);
   await expect(page.getByRole('heading', { name: 'Elvis Costello - Alison' })).toBeVisible();
   await expect(page.locator('audio')).toBeVisible();
+});
+
+test('opens podcast detail directly by URL', async ({ page }) => {
+  await page.goto('/podcast/788236947');
+
+  const sidebar = page.getByRole('complementary');
+  await expect(sidebar.getByRole('heading', { name: 'Song Exploder' })).toBeVisible();
+  await expect(sidebar.getByText(songExploderDescription)).toBeVisible();
+  await expect(page.getByText(`Episodes: ${episodeCount}`)).toBeVisible();
 });

@@ -1,5 +1,5 @@
-import type { Episode } from '../domain/Episode';
 import type { Podcast } from '../domain/Podcast';
+import type { PodcastDetail } from '../domain/PodcastDetail';
 import type { PodcastRepository } from '../domain/PodcastRepository';
 import type { PodcastCache } from './PodcastCache';
 
@@ -21,12 +21,12 @@ export class CachedPodcastRepository implements PodcastRepository {
     return podcasts;
   }
 
-  async getEpisodes(podcastId: string, signal?: AbortSignal): Promise<Episode[]> {
-    const cached = this.cache.getEpisodes(podcastId);
+  async getPodcastDetail(podcastId: string, signal?: AbortSignal): Promise<PodcastDetail> {
+    const cached = this.cache.getPodcastDetail(podcastId);
     if (cached) return cached;
 
-    const episodes = await this.repository.getEpisodes(podcastId, signal);
-    this.cache.setEpisodes(podcastId, episodes);
-    return episodes;
+    const detail = await this.repository.getPodcastDetail(podcastId, signal);
+    this.cache.setPodcastDetail(podcastId, detail);
+    return detail;
   }
 }

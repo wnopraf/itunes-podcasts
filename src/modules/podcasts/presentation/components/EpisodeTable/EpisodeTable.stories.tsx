@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Loader } from '@/shared/presentation/components/Loader/Loader';
-import { useEpisodes } from '../../hooks/useEpisodes';
+import { usePodcastDetail } from '../../hooks/usePodcastDetail';
 import { EpisodeTable } from './EpisodeTable';
 
 const EpisodeTableFromRepository = () => {
-  const episodes = useEpisodes('');
+  const episodes = usePodcastDetail('')?.episodes;
   if (!episodes?.length) return <Loader />;
   return <EpisodeTable episodes={episodes} />;
 };
