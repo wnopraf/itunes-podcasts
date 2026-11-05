@@ -19,7 +19,6 @@ const [firstEpisode] = fixtureEpisodes;
 const createMockRepository = () =>
   ({
     getTopPodcasts: vi.fn<PodcastRepository['getTopPodcasts']>(),
-    getEpisodes: vi.fn<PodcastRepository['getEpisodes']>(),
     getPodcastDetail: vi.fn<PodcastRepository['getPodcastDetail']>(),
   }) satisfies PodcastRepository;
 

@@ -7,7 +7,6 @@ import type { PodcastRepository } from '../domain/PodcastRepository';
 const setup = () => {
   const repository = {
     getTopPodcasts: vi.fn<PodcastRepository['getTopPodcasts']>().mockResolvedValue(fixturePodcasts),
-    getEpisodes: vi.fn<PodcastRepository['getEpisodes']>(),
     getPodcastDetail: vi
       .fn<PodcastRepository['getPodcastDetail']>()
       .mockResolvedValue(fixturePodcastDetail),

@@ -6,11 +6,7 @@ import { AppProviders } from '@/app/providers/AppProviders';
 import type { PodcastCacheReader } from '@/modules/podcasts/application/ports/PodcastCacheReader';
 import type { Podcast } from '@/modules/podcasts/domain/Podcast';
 import type { PodcastRepository } from '@/modules/podcasts/domain/PodcastRepository';
-import {
-  fixtureEpisodes,
-  fixturePodcastDetail,
-  fixturePodcasts,
-} from '@/test/fixtures/podcastFixtures';
+import { fixturePodcastDetail, fixturePodcasts } from '@/test/fixtures/podcastFixtures';
 import { PodcastListPage } from './PodcastListPage';
 
 const renderPage = (
@@ -31,7 +27,6 @@ const renderPage = (
 
 const createRepository = (getTopPodcasts: () => Promise<Podcast[]>): PodcastRepository => ({
   getTopPodcasts,
-  getEpisodes: () => Promise.resolve(fixtureEpisodes),
   getPodcastDetail: () => Promise.resolve(fixturePodcastDetail),
 });
 
@@ -57,7 +52,6 @@ describe('PodcastListPage', () => {
     const getTopPodcasts = vi.fn<PodcastRepository['getTopPodcasts']>();
     renderPage(createRepository(getTopPodcasts), {
       getTopPodcasts: () => fixturePodcasts,
-      getEpisodes: () => null,
       getPodcastDetail: () => null,
     });
 

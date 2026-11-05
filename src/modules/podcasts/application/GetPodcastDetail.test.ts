@@ -8,14 +8,12 @@ const topPodcast = fixturePodcasts.find(({ id }) => id === fixturePodcastDetail.
 
 const createRepository = (overrides: Partial<PodcastRepository> = {}): PodcastRepository => ({
   getTopPodcasts: vi.fn().mockResolvedValue(fixturePodcasts),
-  getEpisodes: vi.fn(),
   getPodcastDetail: vi.fn().mockResolvedValue(fixturePodcastDetail),
   ...overrides,
 });
 
 const createCacheReader = (overrides: Partial<PodcastCacheReader> = {}): PodcastCacheReader => ({
   getTopPodcasts: () => fixturePodcasts,
-  getEpisodes: () => null,
   getPodcastDetail: () => fixturePodcastDetail,
   ...overrides,
 });

@@ -6,7 +6,6 @@ import type { PodcastDetail } from '../domain/PodcastDetail';
 
 const CACHE_KEYS = {
   topPodcasts: 'podcasts:top',
-  episodes: (podcastId: string) => `podcasts:${podcastId}:episodes`,
   podcastDetail: (podcastId: string) => `podcasts:${podcastId}:detail`,
 };
 
@@ -33,15 +32,6 @@ export class PodcastCache implements PodcastCacheReader {
 
   setTopPodcasts(podcasts: Podcast[]): void {
     this.cache.set(CACHE_KEYS.topPodcasts, podcasts, this.ttlMs);
-  }
-
-  getEpisodes(podcastId: string): Episode[] | null {
-    const episodes = this.cache.get<SerializedEpisode[]>(CACHE_KEYS.episodes(podcastId));
-    return episodes?.map(deserializeEpisode) ?? null;
-  }
-
-  setEpisodes(podcastId: string, episodes: Episode[]): void {
-    this.cache.set(CACHE_KEYS.episodes(podcastId), episodes, this.ttlMs);
   }
 
   getPodcastDetail(podcastId: string): PodcastDetail | null {
