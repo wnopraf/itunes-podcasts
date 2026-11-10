@@ -26,6 +26,8 @@ export default defineConfig({
         'src/**/types/**',
         'src/app/env.d.ts',
         'src/app/main.tsx',
+        'src/app/config.ts',
+        'src/app/dependencies.ts',
         'src/modules/podcasts/domain/Episode.ts',
         'src/modules/podcasts/domain/Podcast.ts',
         'src/modules/podcasts/domain/PodcastDetail.ts',
