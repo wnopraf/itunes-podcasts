@@ -71,6 +71,7 @@ describe('useAsyncData', () => {
   });
 
   it('throws the error when the fetcher rejects with an Error', async () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {});
     const fetcher = vi.fn().mockRejectedValue(new Error('boom'));
     renderProbe(fetcher);
 
@@ -78,6 +79,7 @@ describe('useAsyncData', () => {
   });
 
   it('wraps non-Error rejections into an Error', async () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {});
     const fetcher = vi.fn().mockRejectedValue('boom');
     renderProbe(fetcher);
 
