@@ -35,6 +35,12 @@ export default defineConfig({
         'src/modules/podcasts/application/ports/PodcastCacheReader.ts',
         'src/shared/infrastructure/cache/CacheStore.ts',
       ],
+      thresholds: {
+        statements: 95,
+        branches: 90,
+        functions: 95,
+        lines: 95,
+      },
     },
   },
 });
