@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes } from 'react-router';
 import { AppLayout } from '@/app/layouts/AppLayout';
 import { AppProviders } from '@/app/providers/AppProviders';
+import { createPodcastUseCases } from '@/modules/podcasts/application/PodcastUseCases';
 import type { PodcastCacheReader } from '@/modules/podcasts/application/ports/PodcastCacheReader';
 import type { Podcast } from '@/modules/podcasts/domain/Podcast';
 import type { PodcastRepository } from '@/modules/podcasts/domain/PodcastRepository';
@@ -14,7 +15,7 @@ const renderPage = (
   podcastCacheReader?: PodcastCacheReader,
 ) =>
   render(
-    <AppProviders podcastRepository={podcastRepository} podcastCacheReader={podcastCacheReader}>
+    <AppProviders podcastUseCases={createPodcastUseCases(podcastRepository, podcastCacheReader)}>
       <MemoryRouter>
         <Routes>
           <Route element={<AppLayout />}>
