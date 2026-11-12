@@ -1,6 +1,7 @@
 import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryRouter, RouterProvider } from 'react-router';
+import { createPodcastUseCases } from '@/modules/podcasts/application/PodcastUseCases';
 import type { Podcast } from '@/modules/podcasts/domain/Podcast';
 import type { PodcastDetail } from '@/modules/podcasts/domain/PodcastDetail';
 import { PodcastNotFoundError } from '@/modules/podcasts/domain/PodcastNotFoundError';
@@ -25,7 +26,7 @@ const createMockRepository = () =>
 const renderApp = (repository: PodcastRepository, initialPath = '/') => {
   const router = createMemoryRouter(routes, { initialEntries: [initialPath] });
   render(
-    <AppProviders podcastRepository={repository}>
+    <AppProviders podcastUseCases={createPodcastUseCases(repository)}>
       <RouterProvider router={router} />
     </AppProviders>,
   );
