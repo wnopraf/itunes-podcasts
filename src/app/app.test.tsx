@@ -90,7 +90,7 @@ describe('App navigation', () => {
       await within(sidebar).findByRole('heading', { name: 'Song Exploder' }),
     ).toBeInTheDocument();
     expect(within(sidebar).getByText('Hrishikesh Hirway')).toBeInTheDocument();
-    expect(within(sidebar).getByText('Descripción')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Description')).toBeInTheDocument();
     expect(await screen.findByText(`Episodes: ${fixtureEpisodes.length}`)).toBeInTheDocument();
     expect(queryLoader()).not.toBeInTheDocument();
     expect(screen.queryByLabelText('Loading podcast')).not.toBeInTheDocument();
@@ -144,7 +144,7 @@ describe('App navigation', () => {
       await within(sidebar).findByRole('heading', { name: 'Song Exploder' }),
     ).toBeInTheDocument();
     expect(within(sidebar).getByText('Hrishikesh Hirway')).toBeInTheDocument();
-    expect(within(sidebar).getByText('Descripción no disponible')).toBeInTheDocument();
+    expect(within(sidebar).getByText('Description not available')).toBeInTheDocument();
     expect(screen.getByText(`Episodes: ${fixtureEpisodes.length}`)).toBeInTheDocument();
   });
 
