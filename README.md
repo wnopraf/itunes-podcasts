@@ -125,10 +125,12 @@ Unknown ids raise `PodcastNotFoundError`, which the route error boundary maps to
 
 ### Cache strategy
 
-Two complementary pieces, each with a different job:
+Both pieces share the same `PodcastCache` (backed by `localStorage`, so every read and write is synchronous), but each has a different job:
 
-- **`CachedPodcastRepository`** (decorator, async): cache-first. On a miss it calls the iTunes adapter and stores the result. Callers don't know a cache exists.
-- **`getCached()` on the use cases** (sync): reads the cache during the first render. If data is there, the view renders immediately and no request is made; otherwise `useAsyncData` fetches through the decorator. Without it, cached views would flash a skeleton for a frame while the async read resolves.
+- **`CachedPodcastRepository`** (decorator, read-through): wraps the async repository contract. It reads the cache first; on a miss it calls the iTunes adapter and stores the result. It's the only place that writes to the cache, and callers of the repository don't know a cache exists.
+- **`getCached()` on the use cases** (read-only): goes through the `PodcastCacheReader` application port. The repository contract returns a `Promise`, so even a cache hit would only resolve after the first render and cached views would flash a skeleton for a frame. Reading through the port during render avoids that: if data is there, the view renders immediately and no request is made; otherwise `useAsyncData` fetches through the decorator.
+
+I kept the synchronous read out of `PodcastRepository` on purpose: it's a caching concern, not a domain one, and the iTunes adapter would have to implement methods that always return `null`. The cost is that the same `PodcastCache` instance is injected in two places in the composition root.
 
 Other details:
 
@@ -179,7 +181,7 @@ Coverage is measured with V8 and CI fails below the configured thresholds (95 % 
 
 ## Workflow
 
-- Every change goes through a short-lived branch (`feat/`, `fix/`, `refactor/`, `test/`, `docs/`) and a pull request against `main`, squash-merged.
+- Since the CI was set up, every change goes through a short-lived branch (`feat/`, `fix/`, `refactor/`, `test/`, `docs/`) and a pull request against `main`, squash-merged. The initial scaffolding commits were made directly on `main`.
 - Commits follow Conventional Commits and are kept small enough to compile and pass checks on their own.
 - **Pre-commit** (Husky): format check, lint and typecheck.
 - **Pre-push**: unit/integration tests and production build.
