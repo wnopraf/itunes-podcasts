@@ -60,6 +60,21 @@ describe('useAsyncData', () => {
     expect(endLoad).toHaveBeenCalled();
   });
 
+  it('does not return data from a previous fetcher while the new one loads', async () => {
+    const tracker = { startLoad: vi.fn(), endLoad: vi.fn() };
+    const renderWith = (fetcher: (signal: AbortSignal) => Promise<string>) => (
+      <LoadingTrackerContext value={tracker}>
+        <Probe fetcher={fetcher} />
+      </LoadingTrackerContext>
+    );
+    const { rerender } = render(renderWith(() => Promise.resolve('A')));
+    await waitFor(() => expect(screen.getByTestId('data')).toHaveTextContent('A'));
+
+    rerender(renderWith(() => new Promise<string>(() => {})));
+
+    expect(screen.getByTestId('data')).toHaveTextContent('null');
+  });
+
   it('does not fetch when disabled', () => {
     const fetcher = vi.fn().mockResolvedValue('hello');
     const { startLoad, endLoad } = renderProbe(fetcher, { enabled: false });
