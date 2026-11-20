@@ -12,7 +12,7 @@ export const useAsyncData = <T>(
   { enabled = true }: AsyncDataOptions = {},
 ): T | null => {
   const { startLoad, endLoad } = useLoadingTracker();
-  const [data, setData] = useState<T | null>(null);
+  const [result, setResult] = useState<{ fetcher: typeof fetcher; data: T } | null>(null);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
@@ -24,8 +24,8 @@ export const useAsyncData = <T>(
       startLoad();
       setError(null);
       try {
-        const result = await fetcher(controller.signal);
-        if (!controller.signal.aborted) setData(result);
+        const data = await fetcher(controller.signal);
+        if (!controller.signal.aborted) setResult({ fetcher, data });
       } catch (err) {
         if (!controller.signal.aborted) setError(toError(err));
       }
@@ -38,5 +38,5 @@ export const useAsyncData = <T>(
   }, [enabled, fetcher, startLoad, endLoad]);
 
   if (error) throw error;
-  return data;
+  return result?.fetcher === fetcher ? result.data : null;
 };
