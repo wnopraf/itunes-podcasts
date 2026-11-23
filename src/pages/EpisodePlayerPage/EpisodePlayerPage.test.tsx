@@ -31,9 +31,11 @@ describe('EpisodePlayerPage', () => {
     expect(screen.getByRole('heading', { name: 'Page not found' })).toBeInTheDocument();
   });
 
-  it('renders nothing without podcast detail', () => {
-    const { container } = renderPage({ detail: null });
+  it('renders the episode skeleton while the podcast detail loads', () => {
+    renderPage({ detail: null });
 
-    expect(container).toBeEmptyDOMElement();
+    expect(screen.getByLabelText('Loading episode')).toHaveAttribute('aria-busy', 'true');
+    expect(screen.queryByRole('heading')).not.toBeInTheDocument();
+    expect(document.querySelector('audio')).not.toBeInTheDocument();
   });
 });
