@@ -7,18 +7,16 @@ import { EpisodePlayerPage } from './EpisodePlayerPage';
 
 const [episode] = fixtureEpisodes;
 
+const withDetail = (detail: PodcastOutletContext['detail']) =>
+  withOutletContext<PodcastOutletContext>({ detail }, PODCAST_PATHS.EPISODE);
+
 const meta = {
   title: 'Pages/EpisodePlayerPage',
   component: EpisodePlayerPage,
   parameters: {
     layout: 'padded',
+    router: { initialEntries: [toEpisode(episode.podcastId, episode.id)] },
   },
-  decorators: [
-    withOutletContext<PodcastOutletContext>(
-      { detail: fixturePodcastDetail },
-      PODCAST_PATHS.EPISODE,
-    ),
-  ],
   render: () => (
     <div className="container">
       <EpisodePlayerPage />
@@ -30,12 +28,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  parameters: {
-    router: { initialEntries: [toEpisode(episode.podcastId, episode.id)] },
-  },
+  decorators: [withDetail(fixturePodcastDetail)],
+};
+
+export const Loading: Story = {
+  decorators: [withDetail(null)],
 };
 
 export const NotFound: Story = {
+  decorators: [withDetail(fixturePodcastDetail)],
   parameters: {
     router: { initialEntries: [toEpisode(episode.podcastId, '0')] },
   },
