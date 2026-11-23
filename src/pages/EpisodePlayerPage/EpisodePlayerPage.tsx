@@ -2,14 +2,20 @@ import { useParams } from 'react-router';
 import { EpisodeDetail } from '@/modules/podcasts/presentation/components/EpisodeDetail/EpisodeDetail';
 import { usePodcastOutletContext } from '@/modules/podcasts/presentation/contexts/PodcastOutletContext';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import { PageTitle } from '@/shared/presentation/components/PageTitle/PageTitle';
 
 export const EpisodePlayerPage = () => {
   const { episodeId = '' } = useParams();
   const { detail } = usePodcastOutletContext();
-  if (!detail) return null;
+  if (!detail) return <PageTitle />;
 
   const episode = detail.episodes.find(({ id }) => id === episodeId);
   if (!episode) return <NotFoundPage />;
 
-  return <EpisodeDetail episode={episode} />;
+  return (
+    <>
+      <PageTitle title={episode.title} />
+      <EpisodeDetail episode={episode} />
+    </>
+  );
 };

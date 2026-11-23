@@ -37,6 +37,7 @@ test('podcast list and podcast filtering', async ({ page }) => {
   await expect(search).toBeVisible();
   await expect(page.getByRole('progressbar', { name: 'Loading' })).toBeHidden();
   await expect(page.getByRole('heading', { level: 1, name: 'Top podcasts' })).toBeAttached();
+  await expect(page).toHaveTitle('Podcaster');
   await expect(page.getByRole('heading', { level: 2 })).toHaveCount(podcastCount);
 
   // Result count badge
@@ -69,6 +70,7 @@ test('navigates to podcast detail and episode detail', async ({ page }) => {
     page.getByRole('heading', { level: 2, name: `Episodes: ${episodeCount}` }),
   ).toBeVisible();
   await expect(page.getByRole('progressbar', { name: 'Loading' })).toBeHidden();
+  await expect(page).toHaveTitle('Song Exploder | Podcaster');
 
   // Episode player
   await page.getByRole('link', { name: 'Elvis Costello - Alison' }).click();
@@ -77,6 +79,7 @@ test('navigates to podcast detail and episode detail', async ({ page }) => {
     page.getByRole('heading', { level: 2, name: 'Elvis Costello - Alison' }),
   ).toBeVisible();
   await expect(page.locator('audio')).toBeVisible();
+  await expect(page).toHaveTitle('Elvis Costello - Alison | Podcaster');
 });
 
 test('opens podcast detail directly by URL', async ({ page }) => {

@@ -1,6 +1,7 @@
 import { Link, isRouteErrorResponse, useRouteError } from 'react-router';
 import { PodcastNotFoundError } from '@/modules/podcasts/domain/PodcastNotFoundError';
 import { PODCAST_PATHS } from '@/modules/podcasts/presentation/utils/routes';
+import { PageTitle } from '@/shared/presentation/components/PageTitle/PageTitle';
 import { NotFoundPage } from './NotFoundPage';
 
 export const RouteErrorPage = () => {
@@ -15,6 +16,7 @@ export const RouteErrorPage = () => {
 
   return (
     <section>
+      <PageTitle title="Something went wrong" />
       <h1>Something went wrong</h1>
       <p>{message}</p>
       <Link to={PODCAST_PATHS.HOME}>Back to podcasts</Link>

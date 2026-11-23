@@ -92,6 +92,7 @@ describe('App navigation', () => {
     expect(within(sidebar).getByText('Hrishikesh Hirway')).toBeInTheDocument();
     expect(within(sidebar).getByText('Description')).toBeInTheDocument();
     expect(await screen.findByText(`Episodes: ${fixtureEpisodes.length}`)).toBeInTheDocument();
+    expect(document.title).toBe('Song Exploder | Podcaster');
     expect(queryLoader()).not.toBeInTheDocument();
     expect(screen.queryByLabelText('Loading podcast')).not.toBeInTheDocument();
     expect(screen.queryByRole('table', { name: 'Loading episodes' })).not.toBeInTheDocument();
@@ -105,6 +106,7 @@ describe('App navigation', () => {
       ),
     );
     expect(await screen.findByRole('heading', { name: firstEpisode.title })).toBeInTheDocument();
+    expect(document.title).toBe(`${firstEpisode.title} | Podcaster`);
     expect(document.querySelector('audio')).toHaveAttribute('src', firstEpisode.url);
     expect(within(sidebar).getByRole('heading', { name: 'Song Exploder' })).toBeInTheDocument();
     expect(queryLoader()).not.toBeInTheDocument();
@@ -130,6 +132,7 @@ describe('App navigation', () => {
     backHomePodcasts.resolve(fixturePodcasts);
 
     expect(await screen.findByLabelText('Search podcasts')).toBeInTheDocument();
+    expect(document.title).toBe('Podcaster');
     expect(queryLoader()).not.toBeInTheDocument();
   });
 
@@ -170,6 +173,7 @@ describe('App navigation', () => {
     renderApp(repository, '/podcast/0');
 
     expect(await screen.findByRole('heading', { name: 'Page not found' })).toBeInTheDocument();
+    expect(document.title).toBe('Page not found | Podcaster');
     expect(queryLoader()).not.toBeInTheDocument();
   });
 
@@ -204,6 +208,7 @@ describe('App navigation', () => {
       await screen.findByRole('heading', { name: 'Something went wrong' }),
     ).toBeInTheDocument();
     expect(screen.getByText('Network down')).toBeInTheDocument();
+    expect(document.title).toBe('Something went wrong | Podcaster');
     expect(queryLoader()).not.toBeInTheDocument();
   });
 });
