@@ -16,7 +16,7 @@ export const EpisodeDetail = ({ episode }: EpisodeDetailProps) => {
 
   return (
     <Card className={styles.root}>
-      <h3 className={styles.title}>{episode.title}</h3>
+      <h2 className={styles.title}>{episode.title}</h2>
       <div
         className={styles.description}
         dangerouslySetInnerHTML={{ __html: sanitizedDescription }}

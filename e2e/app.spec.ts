@@ -36,7 +36,8 @@ test('podcast list and podcast filtering', async ({ page }) => {
   const search = page.getByLabel('Search podcasts');
   await expect(search).toBeVisible();
   await expect(page.getByRole('progressbar', { name: 'Loading' })).toBeHidden();
-  await expect(page.getByRole('heading', { level: 3 })).toHaveCount(podcastCount);
+  await expect(page.getByRole('heading', { level: 1, name: 'Top podcasts' })).toBeAttached();
+  await expect(page.getByRole('heading', { level: 2 })).toHaveCount(podcastCount);
 
   // Result count badge
   await expect(page.getByRole('status', { name: `${podcastCount} results` })).toBeVisible();
@@ -45,11 +46,11 @@ test('podcast list and podcast filtering', async ({ page }) => {
   await search.fill('joe');
   await expect(page.getByRole('heading', { name: 'The Joe Budden Podcast' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Joe and Jada' })).toBeVisible();
-  await expect(page.getByRole('heading', { level: 3 })).toHaveCount(2);
+  await expect(page.getByRole('heading', { level: 2 })).toHaveCount(2);
   await expect(page.getByRole('status', { name: '2 results' })).toBeVisible();
 
   await search.fill('');
-  await expect(page.getByRole('heading', { level: 3 })).toHaveCount(podcastCount);
+  await expect(page.getByRole('heading', { level: 2 })).toHaveCount(podcastCount);
   await expect(page.getByRole('status', { name: `${podcastCount} results` })).toBeVisible();
 });
 
@@ -63,14 +64,18 @@ test('navigates to podcast detail and episode detail', async ({ page }) => {
 
   // Podcast detail: loaded
   const sidebar = page.getByRole('complementary');
-  await expect(sidebar.getByRole('heading', { name: 'Song Exploder' })).toBeVisible();
-  await expect(page.getByText(`Episodes: ${episodeCount}`)).toBeVisible();
+  await expect(sidebar.getByRole('heading', { level: 1, name: 'Song Exploder' })).toBeVisible();
+  await expect(
+    page.getByRole('heading', { level: 2, name: `Episodes: ${episodeCount}` }),
+  ).toBeVisible();
   await expect(page.getByRole('progressbar', { name: 'Loading' })).toBeHidden();
 
   // Episode player
   await page.getByRole('link', { name: 'Elvis Costello - Alison' }).click();
   await expect(page).toHaveURL(/\/podcast\/788236947\/episode\/1000793533297$/);
-  await expect(page.getByRole('heading', { name: 'Elvis Costello - Alison' })).toBeVisible();
+  await expect(
+    page.getByRole('heading', { level: 2, name: 'Elvis Costello - Alison' }),
+  ).toBeVisible();
   await expect(page.locator('audio')).toBeVisible();
 });
 

@@ -67,14 +67,15 @@ describe('PodcastListPage', () => {
     renderPage(createRepository(() => Promise.resolve(fixturePodcasts)));
 
     const search = await screen.findByLabelText('Search podcasts');
-    expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(fixturePodcasts.length);
+    expect(screen.getByRole('heading', { level: 1, name: 'Top podcasts' })).toBeInTheDocument();
+    expect(screen.getAllByRole('heading', { level: 2 })).toHaveLength(fixturePodcasts.length);
     expect(
       screen.getByRole('status', { name: `${fixturePodcasts.length} results` }),
     ).toBeInTheDocument();
 
     await user.type(search, 'joe');
 
-    const titles = screen.getAllByRole('heading', { level: 3 }).map((h) => h.textContent);
+    const titles = screen.getAllByRole('heading', { level: 2 }).map((h) => h.textContent);
     expect(titles).toEqual(['The Joe Budden Podcast', 'Joe and Jada']);
     expect(screen.getByRole('status', { name: '2 results' })).toBeInTheDocument();
 

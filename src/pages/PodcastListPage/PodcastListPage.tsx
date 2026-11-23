@@ -24,12 +24,14 @@ export const PodcastListPage = () => {
   if (!hasPodcasts(podcasts)) {
     return (
       <section className={styles.root}>
+        <h1 className="visually-hidden">Top podcasts</h1>
         <PodcastGridSkeleton />
       </section>
     );
   }
   return (
     <section className={styles.root}>
+      <h1 className="visually-hidden">Top podcasts</h1>
       <header className={styles.header}>
         <PodcastSearch
           podcastCount={filteredPodcasts.length}

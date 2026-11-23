@@ -18,7 +18,7 @@ export const PodcastDetail = ({ podcast }: PodcastDetailProps) => (
     <hr className={styles.divider} />
     <div className={styles.section}>
       <Link to={toPodcast(podcast.id)} className="link">
-        <h3 className={styles.title}>{podcast.title}</h3>
+        <h1 className={styles.title}>{podcast.title}</h1>
         <p className={styles.author}>{podcast.author}</p>
       </Link>
     </div>
