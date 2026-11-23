@@ -18,9 +18,7 @@ export class ItunesPodcastRepository implements PodcastRepository {
   async getTopPodcasts(signal?: AbortSignal): Promise<Podcast[]> {
     const url = this.urlBuilder.podcastsList();
     try {
-      const response = await fetch(url, { signal });
-      if (!response.ok) throw new Error(`Request failed with status ${response.status}: ${url}`);
-      const dto: PodcastsResponseApiDto = await response.json();
+      const dto = await this.fetchJson<PodcastsResponseApiDto>(url, signal);
       return mapPodcastApiDtoToPodcast(dto);
     } catch (error) {
       if (!signal?.aborted) console.error('[ItunesPodcastRepository] getTopPodcasts', error);
@@ -31,9 +29,7 @@ export class ItunesPodcastRepository implements PodcastRepository {
   async getPodcastDetail(podcastId: string, signal?: AbortSignal): Promise<PodcastDetail> {
     const url = this.urlBuilder.podcastDetail(podcastId);
     try {
-      const response = await fetch(url, { signal });
-      if (!response.ok) throw new Error(`Request failed with status ${response.status}: ${url}`);
-      const dto: PodcastDetailResponseApiDto = await response.json();
+      const dto = await this.fetchJson<PodcastDetailResponseApiDto>(url, signal);
       const detail = mapPodcastDetailApiDtoToPodcastDetail(dto);
       if (!detail) throw new PodcastNotFoundError(podcastId);
       return detail;
@@ -43,5 +39,11 @@ export class ItunesPodcastRepository implements PodcastRepository {
       }
       throw error;
     }
+  }
+
+  private async fetchJson<T>(url: string, signal?: AbortSignal): Promise<T> {
+    const response = await fetch(url, { signal });
+    if (!response.ok) throw new Error(`Request failed with status ${response.status}: ${url}`);
+    return response.json() as Promise<T>;
   }
 }
