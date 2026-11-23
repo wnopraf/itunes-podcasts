@@ -5,20 +5,23 @@ import { PodcastSearch } from '@/modules/podcasts/presentation/components/Podcas
 import { PodcastGrid } from '@/modules/podcasts/presentation/components/PodcastGrid/PodcastGrid';
 import { PodcastGridSkeleton } from '@/modules/podcasts/presentation/components/PodcastGrid/PodcastGridSkeleton';
 import styles from './PodcastListPage.module.css';
+import type { Podcast } from '@/modules/podcasts/domain/Podcast';
+
+const hasPodcasts: (podcasts: Podcast[] | null) => podcasts is Podcast[] = (podcasts) =>
+  podcasts !== null;
 
 export const PodcastListPage = () => {
   const podcasts = useTopPodcasts();
   const [query, setQuery] = useState('');
   const deferredQuery = useDeferredValue(query);
   const isFiltering = deferredQuery !== query;
-  const hasPodcasts = useMemo(() => !!podcasts, [podcasts]);
   const filteredPodcasts = useMemo(() => {
-    return hasPodcasts ? filterPodcasts(podcasts!, deferredQuery) : [];
-  }, [hasPodcasts, podcasts, deferredQuery]);
+    return hasPodcasts(podcasts) ? filterPodcasts(podcasts, deferredQuery) : [];
+  }, [podcasts, deferredQuery]);
   const hasFilteredResults = filteredPodcasts.length > 0;
   const resultsClassName = [styles.results, isFiltering && styles.stale].filter(Boolean).join(' ');
 
-  if (!hasPodcasts) {
+  if (!hasPodcasts(podcasts)) {
     return (
       <section className={styles.root}>
         <PodcastGridSkeleton />
