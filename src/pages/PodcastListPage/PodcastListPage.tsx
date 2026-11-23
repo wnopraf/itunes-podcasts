@@ -4,6 +4,7 @@ import { filterPodcasts } from '@/modules/podcasts/presentation/utils/filterPodc
 import { PodcastSearch } from '@/modules/podcasts/presentation/components/PodcastSearch/PodcastSearch';
 import { PodcastGrid } from '@/modules/podcasts/presentation/components/PodcastGrid/PodcastGrid';
 import { PodcastGridSkeleton } from '@/modules/podcasts/presentation/components/PodcastGrid/PodcastGridSkeleton';
+import { PageTitle } from '@/shared/presentation/components/PageTitle/PageTitle';
 import styles from './PodcastListPage.module.css';
 import type { Podcast } from '@/modules/podcasts/domain/Podcast';
 
@@ -24,12 +25,16 @@ export const PodcastListPage = () => {
   if (!hasPodcasts(podcasts)) {
     return (
       <section className={styles.root}>
+        <PageTitle />
+        <h1 className="visually-hidden">Top podcasts</h1>
         <PodcastGridSkeleton />
       </section>
     );
   }
   return (
     <section className={styles.root}>
+      <PageTitle />
+      <h1 className="visually-hidden">Top podcasts</h1>
       <header className={styles.header}>
         <PodcastSearch
           podcastCount={filteredPodcasts.length}

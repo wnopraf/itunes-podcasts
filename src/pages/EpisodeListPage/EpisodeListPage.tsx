@@ -3,12 +3,14 @@ import { EpisodeTableSkeleton } from '@/modules/podcasts/presentation/components
 import { EpisodeTableHeader } from '@/modules/podcasts/presentation/components/EpisodeTableHeader/EpisodeTableHeader';
 import { EpisodeTableHeaderSkeleton } from '@/modules/podcasts/presentation/components/EpisodeTableHeader/EpisodeTableHeaderSkeleton';
 import { usePodcastOutletContext } from '@/modules/podcasts/presentation/contexts/PodcastOutletContext';
+import { PageTitle } from '@/shared/presentation/components/PageTitle/PageTitle';
 
 export const EpisodeListPage = () => {
   const { detail } = usePodcastOutletContext();
   if (!detail) {
     return (
       <>
+        <PageTitle />
         <EpisodeTableHeaderSkeleton />
         <EpisodeTableSkeleton />
       </>
@@ -17,6 +19,7 @@ export const EpisodeListPage = () => {
 
   return (
     <>
+      <PageTitle title={detail.podcast.title} />
       <EpisodeTableHeader episodeCount={detail.episodes.length} />
       <EpisodeTable episodes={detail.episodes} />
     </>

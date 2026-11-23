@@ -7,6 +7,6 @@ type EpisodeTableHeaderProps = {
 
 export const EpisodeTableHeader = ({ episodeCount }: EpisodeTableHeaderProps) => (
   <Card className={styles.root}>
-    <div className={styles.content}>Episodes: {episodeCount}</div>
+    <h2 className={styles.content}>Episodes: {episodeCount}</h2>
   </Card>
 );
