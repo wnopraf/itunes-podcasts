@@ -1,11 +1,12 @@
 import { useId, type ComponentPropsWithoutRef } from 'react';
 import styles from './Input.module.css';
 
-type SearchInputProps = Omit<ComponentPropsWithoutRef<'input'>, 'type' | 'value' | 'onChange'> & {
+type InputProps = Omit<ComponentPropsWithoutRef<'input'>, 'type' | 'value' | 'onChange'> & {
   label: string;
   hideLabel?: boolean;
   value: string;
   onValueChange: (value: string) => void;
+  type?: 'text' | 'search' | 'email' | 'password' | 'tel' | 'url';
 };
 
 export const Input = ({
@@ -15,8 +16,9 @@ export const Input = ({
   onValueChange,
   id,
   className,
+  type = 'text',
   ...rest
-}: SearchInputProps) => {
+}: InputProps) => {
   const generatedId = useId();
   const inputId = id ?? generatedId;
 
@@ -28,7 +30,7 @@ export const Input = ({
       <input
         {...rest}
         id={inputId}
-        type="search"
+        type={type}
         className={styles.field}
         value={value}
         onChange={(e) => onValueChange(e.target.value)}

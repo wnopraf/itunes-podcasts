@@ -7,8 +7,8 @@ const meta = {
   title: 'Shared/Input',
   component: Input,
   args: {
-    label: 'Search',
-    placeholder: 'Filter podcasts...',
+    label: 'Name',
+    placeholder: 'Enter your name',
     value: '',
     onValueChange: fn(),
   },
@@ -32,9 +32,13 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export const WithValue: Story = {
-  args: { value: 'Song Exploder' },
+  args: { value: 'Jane Doe' },
 };
 
 export const HiddenLabel: Story = {
-  args: { label: 'Filter podcasts', hideLabel: true },
+  args: { hideLabel: true },
+};
+
+export const Search: Story = {
+  args: { type: 'search', label: 'Search', placeholder: 'Search...' },
 };

@@ -9,7 +9,6 @@ const meta = {
   args: {
     podcastCount: 100,
     label: 'Search',
-    hideLabel: true,
     value: '',
     onValueChange: fn(),
   },
