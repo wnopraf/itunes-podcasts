@@ -6,7 +6,8 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
 import { PageTitle } from '@/shared/presentation/components/PageTitle/PageTitle';
 
 export const EpisodePlayerPage = () => {
-  const { episodeId = '' } = useParams();
+  const { episodeId } = useParams<'episodeId'>();
+  if (!episodeId) throw new Error('EpisodePlayerPage requires an :episodeId route param');
   const { detail } = usePodcastOutletContext();
   if (!detail) {
     return (
