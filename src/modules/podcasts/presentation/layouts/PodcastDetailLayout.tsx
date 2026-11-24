@@ -6,7 +6,8 @@ import type { PodcastOutletContext } from '../contexts/PodcastOutletContext';
 import { usePodcastDetail } from '../hooks/usePodcastDetail';
 
 export const PodcastDetailLayout = () => {
-  const { podcastId = '' } = useParams();
+  const { podcastId } = useParams<'podcastId'>();
+  if (!podcastId) throw new Error('PodcastDetailLayout requires a :podcastId route param');
   const detail = usePodcastDetail(podcastId);
 
   return (
