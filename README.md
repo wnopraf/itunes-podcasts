@@ -37,6 +37,7 @@ Some conditions from the brief:
 
 - [x] Sidebar with the podcast image, title, author and description.
 - [x] Main section with the number of episodes and a list showing title, release date and duration of each one.
+      (The API URL from the brief already includes `limit=20`, so the list is restricted to 20 episodes.)
 - [x] Cache the podcast detail for 1 day.
 - [x] Clicking an episode title opens the episode view.
 
@@ -153,7 +154,7 @@ The brief asks for a SPA with clean URLs. All the data is public, cached on the 
 - **Pages** (`src/pages`): one per route. They read route params or the outlet context, call hooks and compose module components. They hold the only view state (e.g. the search query).
 - **Layouts**: `AppLayout` (header + loading indicator) and `PodcastDetailLayout`, which loads the podcast detail once and shares it with the episode list and the episode player through the outlet context. Navigating between episodes doesn't refetch.
 - **Module components** (`modules/podcasts/presentation/components`): presentational, they receive domain models by props and know nothing about data fetching. Every component has a Storybook story, and the ones that wait for data (grid, sidebar, episode table) have a matching skeleton.
-- **Shared components** (`src/shared/presentation/components`): `Card`, `Input`, `Loader`, `Skeleton`. Domain-agnostic building blocks.
+- **Shared components** (`src/shared/presentation/components`): `Card`, `Input`, `Loader`, `Skeleton`, `PageTitle`. Domain-agnostic building blocks.
 
 ### Styling
 
